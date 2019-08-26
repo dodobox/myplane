@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="myplane.cpp" />
+    <ClCompile Include="playerplane1.cpp" />
+    <ClCompile Include="utils.cpp" />
+    <ClCompile Include="plane.cpp">
+      <Filter>plane</Filter>
+    </ClCompile>
+    <ClCompile Include="plane0.cpp">
+      <Filter>plane</Filter>
+    </ClCompile>
+    <ClCompile Include="planemanager.cpp">
+      <Filter>plane</Filter>
+    </ClCompile>
+    <ClCompile Include="bullet0.cpp">
+      <Filter>bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="bulletbase.cpp">
+      <Filter>bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="bulletmanager.cpp">
+      <Filter>bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="behaviour0control.cpp">
+      <Filter>behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="behaviourcontrol.cpp">
+      <Filter>behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="behaviourcontrolmanager.cpp">
+      <Filter>behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="keyboardcontrol.cpp">
+      <Filter>behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="canvas.cpp">
+      <Filter>canvas</Filter>
+    </ClCompile>
+    <ClCompile Include="consolecanvas.cpp">
+      <Filter>canvas</Filter>
+    </ClCompile>
+    <ClCompile Include="plane1.cpp">
+      <Filter>plane</Filter>
+    </ClCompile>
+    <ClCompile Include="bkmanager.cpp">
+      <Filter>background</Filter>
+    </ClCompile>
+    <ClCompile Include="picturemanager.cpp">
+      <Filter>picture</Filter>
+    </ClCompile>
+    <ClCompile Include="picture.cpp">
+      <Filter>picture</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="playerplane0.h" />
+    <ClInclude Include="types.h" />
+    <ClInclude Include="utils.h" />
+    <ClInclude Include="plane.h">
+      <Filter>plane</Filter>
+    </ClInclude>
+    <ClInclude Include="plane0.h">
+      <Filter>plane</Filter>
+    </ClInclude>
+    <ClInclude Include="planemanager.h">
+      <Filter>plane</Filter>
+    </ClInclude>
+    <ClInclude Include="bullet0.h">
+      <Filter>bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="bulletbase.h">
+      <Filter>bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="bulletmanager.h">
+      <Filter>bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="behaviour0control.h">
+      <Filter>behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="behaviourcontrol.h">
+      <Filter>behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="behaviourcontrolmanager.h">
+      <Filter>behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="keyboardcontrol.h">
+      <Filter>behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="canvas.h">
+      <Filter>canvas</Filter>
+    </ClInclude>
+    <ClInclude Include="consolecanvas.h">
+      <Filter>canvas</Filter>
+    </ClInclude>
+    <ClInclude Include="plane1.h">
+      <Filter>plane</Filter>
+    </ClInclude>
+    <ClInclude Include="bkmanager.h">
+      <Filter>background</Filter>
+    </ClInclude>
+    <ClInclude Include="picturemanager.h">
+      <Filter>picture</Filter>
+    </ClInclude>
+    <ClInclude Include="picture.h">
+      <Filter>picture</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image.h" />
+    <ClInclude Include="stb_image_resize.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="plane">
+      <UniqueIdentifier>{7d2f6730-8f15-4f8c-acab-5f7849eab123}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bullet">
+      <UniqueIdentifier>{f79150f6-d32a-4186-8d1e-115cf14daae6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="behaviour">
+      <UniqueIdentifier>{d438d6a7-f494-4fe2-9e56-0a268a92227a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="canvas">
+      <UniqueIdentifier>{d8777881-5497-4425-942a-dad119b50c43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gui">
+      <UniqueIdentifier>{50818e1b-8247-40aa-8ae2-f8c57e0fdf7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="background">
+      <UniqueIdentifier>{bddcf250-8b8e-4981-92c5-8380387a2473}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="picture">
+      <UniqueIdentifier>{5a2b5bed-72e1-4aaa-acd2-13143e6d1852}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
