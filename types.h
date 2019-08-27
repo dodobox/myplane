@@ -11,6 +11,7 @@
 typedef unsigned char byte;
 typedef int int32;
 typedef unsigned int uint32;
+typedef void* object32;
 
 
 template<class T>
@@ -45,6 +46,7 @@ enum EPlaneType{
     EPT_TYPE3,
     EPT_TYPE4,
     EPT_TYPE5,
+    EPT_COUNT,
 };
 
 enum EPlaneCamp{
@@ -72,6 +74,36 @@ enum EPlaneDirection{
 enum EPicture{
     EP_Plane0,
     EP_Count,
+};
+
+enum EEventType{    //事件类型
+    EET_0,      //刷飞机事件
+    EET_1,      
+    EET_2,
+    EET_3,
+    EET_4,
+    EET_COUNT,
+};
+
+enum EAppearPositionType{
+    EAPT_0,
+    EAPT_1,
+    EAPT_2,
+    EAPT_3,
+    EAPT_4,
+    EAPT_5,
+    EAPT_COUNT,
+};
+
+enum ETriggerType{  //触发器
+    ETT_0,      //距离触发
+    ETT_1,
+    ETT_2,
+    ETT_3,
+    ETT_4,
+    ETT_5,
+    ETT_6,
+    ETT_COUNT,
 };
 
 

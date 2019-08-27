@@ -3,6 +3,7 @@
 
 #include "types.h"
 #include "canvas.h"
+#include "planeconfig.h"
 
 class CPlane{
 public:
@@ -14,6 +15,7 @@ public:
     virtual bool Update( float fDelta ) = 0;
     void DrawPlane( CCanvas* pCanvas, int32 x, int32 y, EPlaneDirection eDirection, int32 nShapeWidth, int32 nShapeHeight, int32 nAnchorLeft, int32 nAnchorTop, uint32 *pShape );
     int32 m_nID;
+    CPlaneInfo* m_pPlaneInfo;
     EPlaneCamp m_eCamp;
     EPlaneType m_eType;
     EBehaviourType m_eBehaviourType;

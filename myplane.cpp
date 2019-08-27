@@ -7,6 +7,7 @@
 #include "planemanager.h"
 #include "behaviourcontrolmanager.h"
 #include "picturemanager.h"
+#include "planeconfig.h"
 
 #define KEYDOWN(vk_code) ((GetAsyncKeyState(vk_code) & 0x8000)? 1 : 0)
 
@@ -347,9 +348,10 @@ int main(){
     SetConsoleWindowInfo( hOut, true, &rc );
 
     CPictureManager::GetInterface();
+    CPlaneConfig::GetInterface();
     CBehaviourControlManager::GetInterface();
 
-    CCanvas* _pCanvas = CCanvas::CreateCanvas( ECT_CONSOLECAVNAS, 90, 120 );
+    CCanvas* _pCanvas = CCanvas::CreateCanvas( ECT_CONSOLECAVNAS, 90, 110 );
     CPlaneManager* _pPlaneManager = CPlaneManager::GetInterface();
     _pPlaneManager->AddPlane( EPT_TYPE0, 50, 50, EPD_S, EBT_KEYBOARD, EPC_RED );
     
@@ -363,6 +365,7 @@ int main(){
     CPlaneManager::Release();
     DELETE( _pCanvas );
     CBehaviourControlManager::Release();
+    CPlaneConfig::Release();
     CPictureManager::Release();
 
     system("pause");

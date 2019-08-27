@@ -14,6 +14,8 @@ public:
     virtual bool Update( float fDelta );
 
     CPictureInfo* m_pPictureInfo;
+    int32 m_nPictureAnchorX;
+    int32 m_nPictureAnchorY;
 
 };
 

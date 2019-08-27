@@ -2,7 +2,7 @@
 #define __PICTUERMANAGER_H__
 
 #include "picture.h"
-#include <vector>
+#include <map>
 
 class CPictureManager{
 public:
@@ -10,12 +10,12 @@ public:
     static void Release();
     CPictureManager();
     ~CPictureManager();
-
     void Init();
     void Final();
-   // CPictureInfo* GetPicture( const char* strFileName );
+    CPictureInfo* GetPicture( const char* strFileName );
 
-    std::vector< CPictureInfo* > m_vPictureInfoList;
+private:
+    std::map< uint32, CPictureInfo* > m_vPictureInfoList;
 };
 
 

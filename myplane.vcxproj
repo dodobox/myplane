@@ -142,6 +142,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="background.cpp" />
     <ClCompile Include="behaviour0control.cpp" />
     <ClCompile Include="behaviourcontrolmanager.cpp" />
     <ClCompile Include="bkmanager.cpp" />
@@ -151,6 +152,7 @@
     <ClCompile Include="canvas.cpp" />
     <ClCompile Include="consolecanvas.cpp" />
     <ClCompile Include="behaviourcontrol.cpp" />
+    <ClCompile Include="eventmanager.cpp" />
     <ClCompile Include="keyboardcontrol.cpp" />
     <ClCompile Include="myplane.cpp" />
     <ClCompile Include="picture.cpp" />
@@ -158,11 +160,18 @@
     <ClCompile Include="plane0.cpp" />
     <ClCompile Include="plane.cpp" />
     <ClCompile Include="plane1.cpp" />
+    <ClCompile Include="planeconfig.cpp" />
     <ClCompile Include="planemanager.cpp" />
     <ClCompile Include="playerplane1.cpp" />
+    <ClCompile Include="stage.cpp" />
+    <ClCompile Include="stageconfig.cpp" />
+    <ClCompile Include="stageeventandtrigger.cpp" />
+    <ClCompile Include="stagemanager.cpp" />
     <ClCompile Include="utils.cpp" />
+    <ClCompile Include="xml.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="background.h" />
     <ClInclude Include="behaviour0control.h" />
     <ClInclude Include="behaviourcontrolmanager.h" />
     <ClInclude Include="bkmanager.h" />
@@ -172,18 +181,26 @@
     <ClInclude Include="canvas.h" />
     <ClInclude Include="consolecanvas.h" />
     <ClInclude Include="behaviourcontrol.h" />
+    <ClInclude Include="eventmanager.h" />
     <ClInclude Include="keyboardcontrol.h" />
     <ClInclude Include="picture.h" />
     <ClInclude Include="picturemanager.h" />
     <ClInclude Include="plane0.h" />
     <ClInclude Include="plane.h" />
     <ClInclude Include="plane1.h" />
+    <ClInclude Include="planeconfig.h" />
     <ClInclude Include="planemanager.h" />
     <ClInclude Include="playerplane0.h" />
+    <ClInclude Include="rapidxml.h" />
+    <ClInclude Include="stage.h" />
+    <ClInclude Include="stageconfig.h" />
+    <ClInclude Include="stageeventandtrigger.h" />
+    <ClInclude Include="stagemanager.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="stb_image_resize.h" />
     <ClInclude Include="types.h" />
     <ClInclude Include="utils.h" />
+    <ClInclude Include="xml.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

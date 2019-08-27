@@ -2,6 +2,7 @@
 
 CPlane::CPlane():
 m_nID( -1 ),
+m_pPlaneInfo( NULL ),
 m_eCamp( EPC_UNKOWN ),
 m_eType( EPT_UNKOWN ),
 m_eBehaviourType( EBT_UNKOWN ),

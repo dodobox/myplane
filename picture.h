@@ -7,7 +7,6 @@ class CPictureInfo{
 public:
     CPictureInfo();
     ~CPictureInfo();
-    int32 m_nID;
     int32 m_nWidth;
     int32 m_nHeight;
     int32 m_nChannel;

@@ -52,6 +52,30 @@
     <ClCompile Include="picture.cpp">
       <Filter>picture</Filter>
     </ClCompile>
+    <ClCompile Include="xml.cpp">
+      <Filter>xml</Filter>
+    </ClCompile>
+    <ClCompile Include="planeconfig.cpp">
+      <Filter>plane</Filter>
+    </ClCompile>
+    <ClCompile Include="stage.cpp">
+      <Filter>stage</Filter>
+    </ClCompile>
+    <ClCompile Include="eventmanager.cpp">
+      <Filter>stage</Filter>
+    </ClCompile>
+    <ClCompile Include="stageconfig.cpp">
+      <Filter>stage</Filter>
+    </ClCompile>
+    <ClCompile Include="background.cpp">
+      <Filter>stage</Filter>
+    </ClCompile>
+    <ClCompile Include="stageeventandtrigger.cpp">
+      <Filter>stage</Filter>
+    </ClCompile>
+    <ClCompile Include="stagemanager.cpp">
+      <Filter>stage</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="playerplane0.h" />
@@ -107,6 +131,31 @@
     </ClInclude>
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="stb_image_resize.h" />
+    <ClInclude Include="xml.h">
+      <Filter>xml</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidxml.h" />
+    <ClInclude Include="planeconfig.h">
+      <Filter>plane</Filter>
+    </ClInclude>
+    <ClInclude Include="stage.h">
+      <Filter>stage</Filter>
+    </ClInclude>
+    <ClInclude Include="eventmanager.h">
+      <Filter>stage</Filter>
+    </ClInclude>
+    <ClInclude Include="stageconfig.h">
+      <Filter>stage</Filter>
+    </ClInclude>
+    <ClInclude Include="background.h">
+      <Filter>stage</Filter>
+    </ClInclude>
+    <ClInclude Include="stageeventandtrigger.h">
+      <Filter>stage</Filter>
+    </ClInclude>
+    <ClInclude Include="stagemanager.h">
+      <Filter>stage</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="plane">
@@ -129,6 +178,12 @@
     </Filter>
     <Filter Include="picture">
       <UniqueIdentifier>{5a2b5bed-72e1-4aaa-acd2-13143e6d1852}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="xml">
+      <UniqueIdentifier>{ad76c045-ef78-45da-8962-169bdc40a7e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="stage">
+      <UniqueIdentifier>{9ad7847a-5d7b-4a1f-9a6d-f4bb902528a5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
