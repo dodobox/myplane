@@ -6,10 +6,10 @@ CPlane0::CPlane0():
 CPlane(){
     m_eType = EPT_TYPE0;
     m_pPlaneInfo = CPlaneConfig::GetInterface()->GetPlaneInfo( m_eType );
-    m_fAP = m_pPlaneInfo->m_tAttribute.m_nAP;
-    m_fDP = m_pPlaneInfo->m_tAttribute.m_nDP;
-    m_fSpeed = m_pPlaneInfo->m_tAttribute.m_fSpeed;
-    m_nHP = m_pPlaneInfo->m_tAttribute.m_nHP;
+    //m_fAP = m_pPlaneInfo->m_tAttribute.m_nAP;
+    //m_fDP = m_pPlaneInfo->m_tAttribute.m_nDP;
+    //m_fSpeed = m_pPlaneInfo->m_tAttribute.m_fSpeed;
+    //m_nHP = m_pPlaneInfo->m_tAttribute.m_nHP;
 }
 CPlane0::~CPlane0(){
 

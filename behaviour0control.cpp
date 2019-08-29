@@ -1,4 +1,6 @@
 #include "behaviour0control.h"
+#include "plane.h"
+
 
 CBehaviour0Control::CBehaviour0Control():
 CBehaviourControl(){
@@ -14,5 +16,5 @@ void CBehaviour0Control::Final(){
 
 }
 void CBehaviour0Control::Update( CPlane* pPlane, float fDelta ){
-
+    pPlane->m_tPosition.Y += 1.0f;
 }

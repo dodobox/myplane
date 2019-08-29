@@ -37,12 +37,6 @@ void CPlaneConfig::Init(){
         const char* _strFileName = _tPictureNode.GetAttributeValue("filename");
         _pPlaneInfo->m_tPicture.m_pPictureInfo = CPictureManager::GetInterface()->GetPicture( _strFileName );
 
-        CXMLNode _tAttributeNode = _tNode.GetNode( "attribute" );
-        _pPlaneInfo->m_tAttribute.m_nAP = _tAttributeNode.GetAttributeInt32Value("ap");
-        _pPlaneInfo->m_tAttribute.m_nDP = _tAttributeNode.GetAttributeInt32Value( "dp" );
-        _pPlaneInfo->m_tAttribute.m_fSpeed = _tAttributeNode.GetAttributeInt32Value( "speed" );
-        _pPlaneInfo->m_tAttribute.m_nHP = _tAttributeNode.GetAttributeInt32Value( "hp" );
-
         m_vPlaneInfoList[ _nType ] = _pPlaneInfo;
         _tNode = _tNode.GetNextNode();
     }

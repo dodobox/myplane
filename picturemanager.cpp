@@ -59,6 +59,7 @@ CPictureInfo* CPictureManager::GetPicture( const char* strFileName ){
         byte* _pData = stbi_load( strFileName, &x, &y, &dummy, 0 );
         if( _pData ){
             _pPictureInfo = NEW CPictureInfo();
+            _pPictureInfo->m_nKey = _nHashCode;
             _pPictureInfo->m_nWidth = x;
             _pPictureInfo->m_nHeight = y;
             _pPictureInfo->m_nChannel = dummy;
@@ -70,4 +71,14 @@ CPictureInfo* CPictureManager::GetPicture( const char* strFileName ){
     }
 
     return _pPictureInfo;
+}
+
+bool CPictureManager::Remove( CPictureInfo* pPictureInfo ){
+    auto it = m_vPictureInfoList.find( pPictureInfo->m_nKey );
+    if( it != m_vPictureInfoList.end() ){
+        m_vPictureInfoList.erase( it );
+        DELETE( pPictureInfo );
+        return true;
+    }
+    return false;
 }

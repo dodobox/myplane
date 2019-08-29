@@ -39,9 +39,7 @@ void CPlane::DrawPlane( CCanvas* pCanvas, int32 x, int32 y, EPlaneDirection eDir
         int32 _nY = y + nAnchorTop;
         for( int32 j = 0; j < nShapeHeight; j ++ ){
             for( int32 i = 0; i < nShapeWidth; i ++ ){
-                if( pShape[j * nShapeWidth + i] > 0xff000000 ){
-                    pCanvas->SetPixel( _nX + i, _nY - j, 1 );
-                }
+                pCanvas->SetPixel( _nX + i, _nY - j, pShape[j * nShapeWidth + i] );
             }
         }
     }break;
@@ -61,9 +59,7 @@ void CPlane::DrawPlane( CCanvas* pCanvas, int32 x, int32 y, EPlaneDirection eDir
         int32 _nY = y - nAnchorTop;
         for( int32 j = 0; j < nShapeHeight; j ++ ){
             for( int32 i = 0; i < nShapeWidth; i ++ ){
-                if( pShape[j * nShapeWidth + i] != 0 ){
-                    pCanvas->SetPixel( _nX + i, _nY + j, 1 );
-                }
+                pCanvas->SetPixel( _nX + i, _nY + j, pShape[j * nShapeWidth + i] );
             }
         }
     }break;

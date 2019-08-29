@@ -13,6 +13,7 @@ public:
     void Init();
     void Final();
     CPictureInfo* GetPicture( const char* strFileName );
+    bool Remove( CPictureInfo* pPictureInfo );
 
 private:
     std::map< uint32, CPictureInfo* > m_vPictureInfoList;

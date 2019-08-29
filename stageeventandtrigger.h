@@ -4,6 +4,7 @@
 #include "stageconfig.h"
 #include "xml.h"
 #include <vector>
+#include <list>
 
 class CStageEventAndTrigger{
 public:
@@ -12,10 +13,14 @@ public:
     void Init( CXMLNode *pNode );
     void Final();
     void Update( float fDelta );
+    CStagePlaneInstInfo* GetPlaneInstInfo( int32 nIndex );
+
+private:
+    void TriggerEvent( int32 nEventID );
 
     std::vector<CStagePlaneInstInfo>m_vPlaneInstInfoList;
     std::vector<CStageEventInfo>m_vEventInfoList;
-    std::vector<CStageTriggerInfo>m_vTriggerInfoList;
+    std::list<CStageTriggerInfo>m_vTriggerInfoList;
 };
 
 

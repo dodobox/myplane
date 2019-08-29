@@ -13,12 +13,6 @@ public:
         int32 m_nAnchorY;
         CPictureInfo* m_pPictureInfo;
     }m_tPicture;
-    struct{
-        int32 m_nAP;
-        int32 m_nDP;
-        float m_fSpeed;
-        int32 m_nHP;
-    }m_tAttribute;
 };
 
 class CPlaneConfig{

@@ -1,14 +1,29 @@
 #ifndef __TYPES_H__
 #define __TYPES_H__
 
-
+#ifdef NULL
+#undef NULL
+#endif
 #define NULL 0
 
+#ifdef NEW
+#undef NEW
+#endif
 #define NEW new
+
+#ifdef DELETE
+#undef DELETE
+#endif
 #define DELETE( p ) if( p ) delete p, p = 0;
+
+#ifdef DELETEARRAY
+#undef DELETEARRAY
+#endif
 #define DELETEARRAY( p ) if( p ) delete[] p, p = 0;
 
 typedef unsigned char byte;
+typedef short int16;
+typedef unsigned short uint16;
 typedef int int32;
 typedef unsigned int uint32;
 typedef void* object32;
@@ -77,7 +92,7 @@ enum EPicture{
 };
 
 enum EEventType{    //事件类型
-    EET_0,      //刷飞机事件
+    EET_0,      //
     EET_1,      
     EET_2,
     EET_3,
@@ -112,6 +127,17 @@ struct TIntPoint{
 };
 struct TFloatPoint{
     float X, Y;
+};
+struct TColor{
+    union{
+        struct{
+            byte R;
+            byte G;
+            byte B;
+            byte A;
+        }RGBA;
+        uint32 C;
+    };
 };
 
 

@@ -13,6 +13,7 @@ public:
     virtual void Final() = 0;
     virtual void Clear() = 0;
     virtual bool SetPixel( int32 x, int32 y, uint32 nColor ) = 0;
+    virtual void DrawRect( int32 x, int32 y, int32 nWidth, int32 nHeight, uint32* nColors ) = 0;
     virtual void* GetBuffer() = 0;
     virtual void Show() = 0;
     ECanvasType m_eCanvasType;
