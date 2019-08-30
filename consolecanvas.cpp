@@ -258,7 +258,7 @@ void CConsoleCanvas::SetBKPixel( int32 x, int32 y, uint32 nColor ){
     if( _nIndex < 0 ){
         return;
     }
-    m_ppFGCanvas[y][x] = _vBGColorTable[_nIndex];
+    m_ppFGCanvas[y][x] = _vFGColorTable[_nIndex];
 }
 void CConsoleCanvas::DrawRect( int32 x, int32 y, int32 nWidth, int32 nHeight, uint32* pColors ){
     uint32* _pColors = pColors;

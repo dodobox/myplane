@@ -9,17 +9,18 @@
 </pictures>
 
 <maps scrollspeed="10">
-<tile id="0"><pictures><picture id="0"/></pictures></tile>
+<!-- <tile id="0"><pictures><picture id="0"/></pictures></tile>
 <tile id="1"><pictures><picture id="1"/></pictures></tile>
 <tile id="2"><pictures><picture id="2"/></pictures></tile>
 <tile id="3"><pictures><picture id="3"/></pictures></tile>
+-->
 <tile id="4"><pictures><picture id="4"/></pictures></tile>
 </maps>
 
 <!--×Óµ¯¶¨Òå-->
 <bullets>
 <bullet id="0"type="0"behaviourtype="0">
-	<attribute ap="10"speed="50"/>
+	<attribute ap="10"speed="100"/>
 </bullet>
 </bullets>
 
