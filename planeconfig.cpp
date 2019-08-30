@@ -31,11 +31,22 @@ void CPlaneConfig::Init(){
     while( _tNode.Vaild() ){
         int32 _nType = _tNode.GetAttributeInt32Value( "type" );
         CPlaneInfo* _pPlaneInfo = NEW CPlaneInfo();
+       // _pPlaneInfo->m_eEmitterType = (EBulletEmitterType)_tNode.GetAttributeInt32Value( "emitter" );
         CXMLNode _tPictureNode = _tNode.GetNode( "picture" );
         _pPlaneInfo->m_tPicture.m_nAnchorX = _tPictureNode.GetAttributeInt32Value( "anchorx" );
         _pPlaneInfo->m_tPicture.m_nAnchorY = _tPictureNode.GetAttributeInt32Value( "anchory" );
         const char* _strFileName = _tPictureNode.GetAttributeValue("filename");
         _pPlaneInfo->m_tPicture.m_pPictureInfo = CPictureManager::GetInterface()->GetPicture( _strFileName );
+        CXMLNode _tEmitterNode = _tNode.GetNode( "emitter" );
+        _pPlaneInfo->m_tEmitter.m_eEmitterType = (EBulletEmitterType)_tEmitterNode.GetAttributeInt32Value("type");
+        _pPlaneInfo->m_tEmitter.m_nEmitterPoint = 0;
+        CXMLNode _tEmitterPointNode = _tEmitterNode.GetFirstNode();
+        while( _tEmitterPointNode.Vaild() ){
+            _pPlaneInfo->m_tEmitter.m_vEmitterPoint[_pPlaneInfo->m_tEmitter.m_nEmitterPoint].X = _tEmitterPointNode.GetAttributeInt32Value( "x" );
+            _pPlaneInfo->m_tEmitter.m_vEmitterPoint[_pPlaneInfo->m_tEmitter.m_nEmitterPoint].Y = _tEmitterPointNode.GetAttributeInt32Value( "y" );
+            _pPlaneInfo->m_tEmitter.m_nEmitterPoint ++;
+            _tEmitterPointNode = _tEmitterPointNode.GetNextNode();
+        }
 
         m_vPlaneInfoList[ _nType ] = _pPlaneInfo;
         _tNode = _tNode.GetNextNode();

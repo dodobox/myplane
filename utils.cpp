@@ -77,8 +77,19 @@ float fRand(){
     return (float)Rand() / (float)__RAND_MAX__;
 }
 float fRand( float fMax ){
-    return Rand( 0.0f, fMax );
+    return (float)Rand( 0.0f, fMax );
 }
 float fRand( float lower, float upper ){
     return lower + (upper - lower)*(Rand());
+}
+int32 RandIntArray( int32* pArray, int32 nCount ){
+    for( int32 i = 0; i < nCount; ++i ){
+        int32 index = Rand( i + 1 ) % (i + 1);
+        if( index != i ){
+            pArray[i] = pArray[i] ^ pArray[index];
+            pArray[index] = pArray[i] ^ pArray[index];
+            pArray[i] = pArray[i] ^ pArray[index];
+        }
+    }
+    return 0;
 }

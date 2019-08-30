@@ -11,10 +11,10 @@ public:
     virtual ~CBehaviourControlManager();
     virtual void Init();
     virtual void Final();
-    CBehaviourControl* GetBehaviourControl( EBehaviourType eBehaviourType );
+    CBehaviourControl* GetBehaviourControl( EPlaneBehaviourType eBehaviourType );
 
 private:
-    CBehaviourControl* m_vBehaviourControlList[ EBT_COUNT ];
+    CBehaviourControl* m_vBehaviourControlList[ EPBT_COUNT ];
 };
 
 

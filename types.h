@@ -50,6 +50,7 @@ void Delete2DArray( T** &p ){
 enum ECanvasType{
     ECT_UNKOWN = -1,
     ECT_CONSOLECAVNAS,
+    ECT_DCCAVNAS,
     ECT_DATACANVAS,
 };
 
@@ -64,21 +65,22 @@ enum EPlaneType{
     EPT_COUNT,
 };
 
-enum EPlaneCamp{
+enum ESpriteCamp{
     EPC_UNKOWN = -1,
     EPC_RED,
     EPC_BLUE,
+    EPC_COUNT,
 };
 
-enum EBehaviourType{
-    EBT_UNKOWN = -1,
-    EBT_KEYBOARD,
-    EBT_MOUSE,
-    EBT_TYPE0,
-    EBT_COUNT,
+enum EPlaneBehaviourType{
+    EPBT_UNKOWN = -1,
+    EPBT_KEYBOARD,
+    EPBT_MOUSE,
+    EPBT_TYPE0,
+    EPBT_COUNT,
 };
 
-enum EPlaneDirection{
+enum ESpriteDirection{
     EPD_UNKOWN = -1,
     EPD_E,  //东
     EPD_S,  //南
@@ -106,8 +108,8 @@ enum EAppearPositionType{
     EAPT_2,
     EAPT_3,
     EAPT_4,
-    EAPT_5,
     EAPT_COUNT,
+    EAPT_RAND = 10,
 };
 
 enum ETriggerType{  //触发器
@@ -121,12 +123,40 @@ enum ETriggerType{  //触发器
     ETT_COUNT,
 };
 
+enum EBulletType{
+    EBT_UNKOWN = -1,
+    EBT_0,
+    EBT_1,
+    EBT_2,
+    EBT_3,
+    EBT_4,
+    EBT_COUNT,
+};
+
+enum EBulletBehaviourType{
+    EBBT_UNKOWN = -1,
+    EBBT_0,
+    EBBT_1,
+    EBBT_2,
+    EBBT_COUNT,
+};
+
+enum EBulletEmitterType{
+    EBET_UNKOWN = -1,
+    EBET_0,
+    EBET_1,
+    EBET_COUNT,
+};
+
 
 struct TIntPoint{
     int32 X, Y;
 };
 struct TFloatPoint{
     float X, Y;
+};
+struct TIntRect{
+    int32 m_nLeft, m_nTop, m_nRight, m_nBottom;
 };
 struct TColor{
     union{

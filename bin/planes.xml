@@ -1,10 +1,18 @@
 <planes>
 
 <plane type="0">
-	<picture anchorx="10"anchory="10"filename="plane0.png"/>
+	<picture anchorx="8"anchory="10"filename="plane0.png"/>
+	<emitter type="0">
+		<point x="-4"y="-2"/>
+		<point x="3"y="-2"/>
+	</emitter>
 </plane>
 <plane type="1">
 	<picture anchorx="10"anchory="10"filename="plane1.png"/>
+	<emitter type="0">
+		<point x="-4"y="-2"/>
+		<point x="3"y="-2"/>
+	</emitter>
 </plane>
 
 

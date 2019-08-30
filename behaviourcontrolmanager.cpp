@@ -17,7 +17,7 @@ void CBehaviourControlManager::Release(){
     }
 }
 CBehaviourControlManager::CBehaviourControlManager(){
-    for( int32 i = 0; i < EBT_COUNT; i ++ ){
+    for( int32 i = 0; i < EPBT_COUNT; i ++ ){
         m_vBehaviourControlList[ i ] = NULL;
     }
 }
@@ -25,23 +25,23 @@ CBehaviourControlManager::~CBehaviourControlManager(){
 
 }
 void CBehaviourControlManager::Init(){
-    m_vBehaviourControlList[ EBT_KEYBOARD ] = NEW CKeyboardControl();
-    m_vBehaviourControlList[ EBT_TYPE0 ] = NEW CBehaviour0Control();
+    m_vBehaviourControlList[ EPBT_KEYBOARD ] = NEW CKeyboardControl();
+    m_vBehaviourControlList[ EPBT_TYPE0 ] = NEW CBehaviour0Control();
 
-    for( int32 i = 0; i < EBT_COUNT; i ++ ){
+    for( int32 i = 0; i < EPBT_COUNT; i ++ ){
         if( m_vBehaviourControlList[ i ] ){
             m_vBehaviourControlList[ i ]->Init();
         }
     }
 }
 void CBehaviourControlManager::Final(){
-    for( int32 i = 0; i < EBT_COUNT; i ++ ){
+    for( int32 i = 0; i < EPBT_COUNT; i ++ ){
         if( m_vBehaviourControlList[ i ] ){
             m_vBehaviourControlList[ i ]->Final();
             DELETE( m_vBehaviourControlList[ i ] );
         }
     }
 }
-CBehaviourControl* CBehaviourControlManager::GetBehaviourControl( EBehaviourType eBehaviourType ){
+CBehaviourControl* CBehaviourControlManager::GetBehaviourControl( EPlaneBehaviourType eBehaviourType ){
     return m_vBehaviourControlList[ eBehaviourType ];
 }

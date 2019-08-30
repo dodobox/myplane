@@ -22,18 +22,6 @@
     <ClCompile Include="bulletmanager.cpp">
       <Filter>bullet</Filter>
     </ClCompile>
-    <ClCompile Include="behaviour0control.cpp">
-      <Filter>behaviour</Filter>
-    </ClCompile>
-    <ClCompile Include="behaviourcontrol.cpp">
-      <Filter>behaviour</Filter>
-    </ClCompile>
-    <ClCompile Include="behaviourcontrolmanager.cpp">
-      <Filter>behaviour</Filter>
-    </ClCompile>
-    <ClCompile Include="keyboardcontrol.cpp">
-      <Filter>behaviour</Filter>
-    </ClCompile>
     <ClCompile Include="canvas.cpp">
       <Filter>canvas</Filter>
     </ClCompile>
@@ -76,6 +64,46 @@
     <ClCompile Include="stagemanager.cpp">
       <Filter>stage</Filter>
     </ClCompile>
+    <ClCompile Include="dccanvas.cpp">
+      <Filter>canvas</Filter>
+    </ClCompile>
+    <ClCompile Include="bullet1.cpp">
+      <Filter>bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="bulletconfig.cpp">
+      <Filter>bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="bulletbehaviour0control.cpp">
+      <Filter>behaviour\bulletbehaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="bulletbehaviourcontrol.cpp">
+      <Filter>behaviour\bulletbehaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="bulletbehaviourcontrolmanager.cpp">
+      <Filter>behaviour\bulletbehaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="behaviour0control.cpp">
+      <Filter>behaviour\planebehaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="behaviourcontrol.cpp">
+      <Filter>behaviour\planebehaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="behaviourcontrolmanager.cpp">
+      <Filter>behaviour\planebehaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="keyboardcontrol.cpp">
+      <Filter>behaviour\planebehaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="collisionmap.cpp">
+      <Filter>collision</Filter>
+    </ClCompile>
+    <ClCompile Include="sound.cpp" />
+    <ClCompile Include="bulletemitter.cpp">
+      <Filter>bulletemitter</Filter>
+    </ClCompile>
+    <ClCompile Include="bulletemittermanager.cpp">
+      <Filter>bulletemitter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="playerplane0.h" />
@@ -98,18 +126,6 @@
     </ClInclude>
     <ClInclude Include="bulletmanager.h">
       <Filter>bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="behaviour0control.h">
-      <Filter>behaviour</Filter>
-    </ClInclude>
-    <ClInclude Include="behaviourcontrol.h">
-      <Filter>behaviour</Filter>
-    </ClInclude>
-    <ClInclude Include="behaviourcontrolmanager.h">
-      <Filter>behaviour</Filter>
-    </ClInclude>
-    <ClInclude Include="keyboardcontrol.h">
-      <Filter>behaviour</Filter>
     </ClInclude>
     <ClInclude Include="canvas.h">
       <Filter>canvas</Filter>
@@ -156,6 +172,46 @@
     <ClInclude Include="stagemanager.h">
       <Filter>stage</Filter>
     </ClInclude>
+    <ClInclude Include="dccanvas.h">
+      <Filter>canvas</Filter>
+    </ClInclude>
+    <ClInclude Include="bullet1.h">
+      <Filter>bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="bulletconfig.h">
+      <Filter>bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="bulletbehaviour0control.h">
+      <Filter>behaviour\bulletbehaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="bulletbehaviourcontrol.h">
+      <Filter>behaviour\bulletbehaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="bulletbehaviourcontrolmanager.h">
+      <Filter>behaviour\bulletbehaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="behaviour0control.h">
+      <Filter>behaviour\planebehaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="behaviourcontrol.h">
+      <Filter>behaviour\planebehaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="behaviourcontrolmanager.h">
+      <Filter>behaviour\planebehaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="keyboardcontrol.h">
+      <Filter>behaviour\planebehaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="collisionmap.h">
+      <Filter>collision</Filter>
+    </ClInclude>
+    <ClInclude Include="sound.h" />
+    <ClInclude Include="bulletemitter.h">
+      <Filter>bulletemitter</Filter>
+    </ClInclude>
+    <ClInclude Include="bulletemittermanager.h">
+      <Filter>bulletemitter</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="plane">
@@ -184,6 +240,18 @@
     </Filter>
     <Filter Include="stage">
       <UniqueIdentifier>{9ad7847a-5d7b-4a1f-9a6d-f4bb902528a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="behaviour\planebehaviour">
+      <UniqueIdentifier>{3e046822-7313-4e0d-9529-ddb6b287f533}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="behaviour\bulletbehaviour">
+      <UniqueIdentifier>{69e198b3-e645-463c-991f-1b1c4c7102d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="collision">
+      <UniqueIdentifier>{c736ce2a-e0ec-41f9-b39b-8e1cf88dc955}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bulletemitter">
+      <UniqueIdentifier>{e1567201-e7cf-45a1-b3d7-59e859ce4f8f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

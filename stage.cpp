@@ -26,7 +26,7 @@ void CStage::Final(){
     DELETE( m_pEventAndTrigger );
 }
 void CStage::Update( float fDelta ){
-    m_fStageDistance += 1.0f;
+    m_fStageDistance += m_pBackGround->m_fSpeed * fDelta;
     m_pBackGround->Update( fDelta );
     m_pEventAndTrigger->Update( fDelta );
 }

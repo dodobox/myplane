@@ -2,6 +2,16 @@
 #include "stage.h"
 #include "stagemanager.h"
 #include "planemanager.h"
+#include "utils.h"
+
+
+static  TIntPoint _vInitPosition[EAPT_COUNT] = {
+    { 10, -10 },//0
+    { 30, -10 },//1
+    { 50, -10 },//2
+    { 70, -10 },//3
+    { 90, -10 },//4
+};
 
 
 void CStageEventInfo::DoEvent(){
@@ -18,12 +28,22 @@ void CStageEventInfo::DoType0Event(){
     CStage* _pStage = CStageManager::GetInterface()->GetStage();
     CPlaneManager* _pPlaneManager = CPlaneManager::GetInterface();
     CStagePlaneInstInfo* _pPlaneInstInfo = _pStage->GetStagePlayerInstInfo( m_tEvent0Parame.m_nPlaneInstID );
-    for( int32 i = 0; i < m_tEvent0Parame.m_nCount; i ++ ){
-        CPlane* _pPlane = _pPlaneManager->AddPlane( _pPlaneInstInfo->m_ePlaneType, 50, -10, _pPlaneInstInfo->m_ePlaneDirection, _pPlaneInstInfo->m_eBehaviourType, _pPlaneInstInfo->m_ePlaneCamp );
-        _pPlane->m_fAP = _pPlaneInstInfo->m_tAttribute.m_nAP;
-        _pPlane->m_fDP = _pPlaneInstInfo->m_tAttribute.m_nDP;
-        _pPlane->m_fSpeed = _pPlaneInstInfo->m_tAttribute.m_fSpeed;
-        _pPlane->m_nHP = _pPlaneInstInfo->m_tAttribute.m_nHP;
+    EAppearPositionType _ePositionType = m_tEvent0Parame.m_eAppearPositionType;
+    if( m_tEvent0Parame.m_nCount == 1 ){
+        if( _ePositionType == EAPT_RAND ){
+            _ePositionType = (EAppearPositionType)Rand( EAPT_COUNT );
+        }
+        CPlane* _pPlane = _pPlaneManager->AddPlane( _pPlaneInstInfo->m_ePlaneType, _vInitPosition[_ePositionType].X, _vInitPosition[_ePositionType].Y, _pPlaneInstInfo );
+    } else{
+        int32 _vPosArray[EAPT_COUNT];
+        for( int32 i = 0; i < EAPT_COUNT; i ++ ){
+            _vPosArray[i] = i;
+        }
+        RandIntArray( _vPosArray, EAPT_COUNT );
+        for( int32 i = 0; i < m_tEvent0Parame.m_nCount; i ++ ){
+            _ePositionType = (EAppearPositionType)_vPosArray[i];
+            CPlane* _pPlane = _pPlaneManager->AddPlane( _pPlaneInstInfo->m_ePlaneType, _vInitPosition[_ePositionType].X, _vInitPosition[_ePositionType].Y, _pPlaneInstInfo );
+        }
     }
 }
 

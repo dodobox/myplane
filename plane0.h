@@ -8,14 +8,13 @@ class CPlane0: public CPlane{
 public:
     CPlane0();
     virtual ~CPlane0();
-    virtual void Init( int32 x, int32 y, EPlaneDirection eDirection, EBehaviourType eBehaviourType, EPlaneCamp eCamp );
+    virtual void Init( int32 x, int32 y, CStagePlaneInstInfo* pStagePlaneInstInfo );
     virtual void Final();
     virtual void Draw( CCanvas* pCanvas );
     virtual bool Update( float fDelta );
+    virtual void Fire( int32 nType );
 
-    CPictureInfo* m_pPictureInfo;
-    int32 m_nPictureAnchorX;
-    int32 m_nPictureAnchorY;
+    float m_fFireTime;
 
 };
 

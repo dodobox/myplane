@@ -16,13 +16,11 @@ public:
     virtual void* GetBuffer();
     virtual void Show();
     void SetBKPixel( int32 x, int32 y, uint32 nColor );
-
     int32 Get16ColorIndex( uint32 nColor );
-
     const char m_nFullCode = 'X';
     const char m_nNullCode = ' ';
     CHAR_INFO** m_ppCharInfo;
-    byte** m_ppBKCanvas;
+  //  byte** m_ppBKCanvas;
     byte** m_ppFGCanvas;
 };
 

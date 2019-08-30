@@ -7,6 +7,20 @@ CStageEventAndTrigger::~CStageEventAndTrigger(){
 
 }
 void CStageEventAndTrigger::Init( CXMLNode *pNode ){
+    ///////////////////////////////////////////////////////////////////////
+    //bullets
+    CXMLNode _tBulletsNode = pNode->GetNode( "bullets" );
+    CXMLNode _tBulletNode = _tBulletsNode.GetFirstNode();
+    while( _tBulletNode.Vaild() ){
+        CStageBulletInstInfo _tStageBulletInstInfo;
+        _tStageBulletInstInfo.m_eBulletType = (EBulletType)_tBulletNode.GetAttributeInt32Value( "type" );
+        _tStageBulletInstInfo.m_eBehaviourType = (EBulletBehaviourType)_tBulletNode.GetAttributeInt32Value( "behaviourtype" );
+        CXMLNode _tBulletAttrNode = _tBulletNode.GetNode( "attribute" );
+        _tStageBulletInstInfo.m_tAttribute.m_nAP = _tBulletAttrNode.GetAttributeInt32Value( "ap" );
+        _tStageBulletInstInfo.m_tAttribute.m_fSpeed = _tBulletAttrNode.GetAttributeFloatValue( "speed" );
+        m_vBulletInstInfoList.push_back( _tStageBulletInstInfo );
+        _tBulletNode = _tBulletNode.GetNextNode();
+    }
 
     ///////////////////////////////////////////////////////////////////////
     //planes
@@ -15,9 +29,10 @@ void CStageEventAndTrigger::Init( CXMLNode *pNode ){
     while( _tPlaneNode.Vaild() ){
         CStagePlaneInstInfo _tStagePlaneInstInfo;
         _tStagePlaneInstInfo.m_ePlaneType = (EPlaneType)_tPlaneNode.GetAttributeInt32Value("type");
-        _tStagePlaneInstInfo.m_ePlaneCamp = (EPlaneCamp)_tPlaneNode.GetAttributeInt32Value( "camp" );
-        _tStagePlaneInstInfo.m_eBehaviourType = (EBehaviourType)_tPlaneNode.GetAttributeInt32Value( "behaviortype" );
-        _tStagePlaneInstInfo.m_ePlaneDirection = (EPlaneDirection)_tPlaneNode.GetAttributeInt32Value( "directiontype" );
+        _tStagePlaneInstInfo.m_ePlaneCamp = (ESpriteCamp)_tPlaneNode.GetAttributeInt32Value( "camp" );
+        _tStagePlaneInstInfo.m_eBehaviourType = (EPlaneBehaviourType)_tPlaneNode.GetAttributeInt32Value( "behaviourtype" );
+        _tStagePlaneInstInfo.m_ePlaneDirection = (ESpriteDirection)_tPlaneNode.GetAttributeInt32Value( "directiontype" );
+        _tStagePlaneInstInfo.m_pBulletInstInfo = &m_vBulletInstInfoList[_tPlaneNode.GetAttributeInt32Value( "bullet" )];
         CXMLNode _tPlaneAttrNode = _tPlaneNode.GetNode( "attribute" );
         _tStagePlaneInstInfo.m_tAttribute.m_nAP = _tPlaneAttrNode.GetAttributeInt32Value("ap");
         _tStagePlaneInstInfo.m_tAttribute.m_nDP = _tPlaneAttrNode.GetAttributeInt32Value( "dp" );

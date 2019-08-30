@@ -18,6 +18,7 @@ public:
 private:
     void TriggerEvent( int32 nEventID );
 
+    std::vector< CStageBulletInstInfo >m_vBulletInstInfoList;
     std::vector<CStagePlaneInstInfo>m_vPlaneInstInfoList;
     std::vector<CStageEventInfo>m_vEventInfoList;
     std::list<CStageTriggerInfo>m_vTriggerInfoList;

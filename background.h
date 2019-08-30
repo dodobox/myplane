@@ -17,7 +17,7 @@ public:
     void Update( float fDelta );
     void Draw( CCanvas* pCanvas );
 
-private:
+//private:
     void InitScrollItems();
     CPictureInfo* GetNextPictureInfo();
     void UpdateScrollQueue( float fDeltaDistance );
@@ -25,14 +25,13 @@ private:
         CPictureInfo* m_pPictureInfo;
         float m_fLeft;
         float m_fTop;
-       // float m_fWidth;
-       // float m_fHeight;
     };
     std::list<TScrollItemInfo>m_vScrollQueue;     //¹ö¶¯¶ÓÁÐ
     std::vector<CPictureInfo*>m_vPictureList;
     std::vector<CStageTileInfo>m_vTileInfoList;
     int32 m_nTileIndex;
     float m_fScrollPictureTop;
+    float m_fSpeed;
 };
 
 

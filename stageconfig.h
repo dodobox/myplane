@@ -10,12 +10,23 @@ public:
     int32 m_nPicture;
 };
 
+class CStageBulletInstInfo{
+public:
+    EBulletType m_eBulletType;
+    EBulletBehaviourType m_eBehaviourType;
+    struct{
+        int32 m_nAP;
+        float m_fSpeed;
+    }m_tAttribute;
+};
+
 class CStagePlaneInstInfo{
 public:
     EPlaneType m_ePlaneType;
-    EPlaneCamp m_ePlaneCamp;
-    EBehaviourType m_eBehaviourType;
-    EPlaneDirection m_ePlaneDirection;
+    ESpriteCamp m_ePlaneCamp;
+    EPlaneBehaviourType m_eBehaviourType;
+    ESpriteDirection m_ePlaneDirection;
+    CStageBulletInstInfo* m_pBulletInstInfo;
     struct{
         int32 m_nAP;
         int32 m_nDP;

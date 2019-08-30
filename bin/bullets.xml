@@ -1,0 +1,11 @@
+<bullets>
+
+<bullet type="0">
+	<picture anchorx="1"anchory="1"filename="bullet0.png"/>
+</bullet>
+<bullet type="1">
+	<picture anchorx="1"anchory="1"filename="bullet0.png"/>
+</bullet>
+
+
+</bullets>

@@ -21,7 +21,7 @@ int32 Rand( int32 nMin, int32 nMax );
 float fRand();
 float fRand( float fMax );
 float fRand( float lower, float upper );
-
+int32 RandIntArray( int32* pArray, int32 nCount );
 
 template<class T>inline const T& Min( const T& a, const T& b ){
     return a < b ? a : b;

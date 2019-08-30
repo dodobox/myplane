@@ -5,6 +5,8 @@
 
 class CCanvas{
 public:
+    static TIntPoint m_tCanvasSize;
+    static TIntRect  m_tSceneActiveRect;
     static CCanvas* CreateCanvas( ECanvasType eCavansType, int32 nWidth, int32 nHeight );
     static CCanvas* GetInterface();
     CCanvas();
@@ -17,7 +19,7 @@ public:
     virtual void* GetBuffer() = 0;
     virtual void Show() = 0;
     ECanvasType m_eCanvasType;
-    TIntPoint m_tSize;
+    
 
 };
 

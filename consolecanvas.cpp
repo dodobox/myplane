@@ -1,7 +1,7 @@
 #include "consolecanvas.h"
 #include "utils.h"
 
-uint16 _vFGColorTable[16] = {
+static uint16 _vFGColorTable[16] = {
     0,
     FOREGROUND_RED,
     FOREGROUND_GREEN,
@@ -20,7 +20,7 @@ uint16 _vFGColorTable[16] = {
     FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE,
 };
 
-uint16 _vBGColorTable[16] = {
+static uint16 _vBGColorTable[16] = {
     0,
     BACKGROUND_RED,
     BACKGROUND_GREEN,
@@ -93,19 +93,18 @@ CConsoleCanvas::~CConsoleCanvas(){
 
 }
 void CConsoleCanvas::Init( int32 nWidth, int32 nHeight ){
-    m_tSize = { nWidth, nHeight };
     m_ppCharInfo = New2DArray<CHAR_INFO>( nWidth, nHeight );
-    m_ppBKCanvas = New2DArray<byte>( nWidth, nHeight );
+  //  m_ppBKCanvas = New2DArray<byte>( nWidth, nHeight );
     m_ppFGCanvas = New2DArray<byte>( nWidth, nHeight );
 }
 void CConsoleCanvas::Final(){
     Delete2DArray( m_ppFGCanvas );
-    Delete2DArray( m_ppBKCanvas );
+  //  Delete2DArray( m_ppBKCanvas );
     Delete2DArray( m_ppCharInfo );
 }
 void CConsoleCanvas::Clear(){
-    memset( m_ppBKCanvas[0], 0, m_tSize.X * m_tSize.Y );
-    memset( m_ppFGCanvas[0], 0, m_tSize.X * m_tSize.Y );
+  //  memset( m_ppBKCanvas[0], 0, m_tCanvasSize.X * m_tCanvasSize.Y );
+    memset( m_ppFGCanvas[0], 0, m_tCanvasSize.X * m_tCanvasSize.Y );
 }
 void* CConsoleCanvas::GetBuffer(){
     return m_ppCharInfo[ 0 ];
@@ -244,7 +243,7 @@ int32 CConsoleCanvas::Get16ColorIndex( uint32 nColor ){
 }
 bool CConsoleCanvas::SetPixel( int32 x, int32 y, uint32 nColor ){
    // return false;
-    if( x < 0 || x >= m_tSize.X || y < 0 || y >= m_tSize.Y )return false;
+    if( x < 0 || x >= m_tCanvasSize.X || y < 0 || y >= m_tCanvasSize.Y )return false;
     int32 _nIndex = Get16ColorIndex( nColor );
     if( _nIndex < 0 ){
         return false;
@@ -254,12 +253,12 @@ bool CConsoleCanvas::SetPixel( int32 x, int32 y, uint32 nColor ){
 }
 void CConsoleCanvas::SetBKPixel( int32 x, int32 y, uint32 nColor ){
   //  return;
-    if( x < 0 || x >= m_tSize.X || y < 0 || y >= m_tSize.Y )return;
+    if( x < 0 || x >= m_tCanvasSize.X || y < 0 || y >= m_tCanvasSize.Y )return;
     int32 _nIndex = Get16ColorIndex( nColor );
     if( _nIndex < 0 ){
         return;
     }
-    m_ppBKCanvas[y][x] = _vBGColorTable[_nIndex];
+    m_ppFGCanvas[y][x] = _vBGColorTable[_nIndex];
 }
 void CConsoleCanvas::DrawRect( int32 x, int32 y, int32 nWidth, int32 nHeight, uint32* pColors ){
     uint32* _pColors = pColors;
@@ -272,15 +271,15 @@ void CConsoleCanvas::DrawRect( int32 x, int32 y, int32 nWidth, int32 nHeight, ui
 }
 
 void CConsoleCanvas::Show(){
-    for( int i = 0; i < m_tSize.Y; i++ ){
-        for( int j = 0; j < m_tSize.X; j++ ){
-            m_ppCharInfo[i][j].Attributes = m_ppBKCanvas[i][j] | m_ppFGCanvas[i][j];
+    for( int i = 0; i < m_tCanvasSize.Y; i++ ){
+        for( int j = 0; j < m_tCanvasSize.X; j++ ){
+            m_ppCharInfo[i][j].Attributes = m_ppFGCanvas[i][j];
             m_ppCharInfo[i][j].Char.AsciiChar = m_ppFGCanvas[i][j] == 0 ? m_nNullCode : m_nFullCode;
         }
     }
 
-    COORD dwBufferSize = { m_tSize.X,m_tSize.Y };//固定值(控制台窗口固定的属性值) 
+    COORD dwBufferSize = { m_tCanvasSize.X,m_tCanvasSize.Y };//固定值(控制台窗口固定的属性值) 
     COORD dwBufferCoord = { 0, 0 };//缓冲区左上角的起始位置
-    SMALL_RECT rect = { 0, 0, m_tSize.X - 1, m_tSize.Y - 1 };//显示多大的缓冲区: 大小是一个矩形
+    SMALL_RECT rect = { 0, 0, m_tCanvasSize.X - 1, m_tCanvasSize.Y - 1 };//显示多大的缓冲区: 大小是一个矩形
     WriteConsoleOutput( GetStdHandle( STD_OUTPUT_HANDLE ), (CONST CHAR_INFO *)m_ppCharInfo[0], dwBufferSize, dwBufferCoord, &rect );
 }

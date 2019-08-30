@@ -1,7 +1,7 @@
 #include "behaviourcontrol.h"
 
 CBehaviourControl::CBehaviourControl():
-m_eBehaviourType( EBT_UNKOWN ){
+m_eBehaviourType( EPBT_UNKOWN ){
 
 }
 CBehaviourControl::~CBehaviourControl(){

@@ -2,13 +2,13 @@
 
 <pictures>
 <picture id="0"filename="bk0.png"/>
-<picture id="0"filename="bk1.png"/>
-<picture id="0"filename="bk2.png"/>
-<picture id="0"filename="bk3.png"/>
-<picture id="0"filename="bk4.png"/>
+<picture id="1"filename="bk1.png"/>
+<picture id="2"filename="bk2.png"/>
+<picture id="3"filename="bk3.png"/>
+<picture id="4"filename="bk4.png"/>
 </pictures>
 
-<maps>
+<maps scrollspeed="10">
 <tile id="0"><pictures><picture id="0"/></pictures></tile>
 <tile id="1"><pictures><picture id="1"/></pictures></tile>
 <tile id="2"><pictures><picture id="2"/></pictures></tile>
@@ -16,32 +16,37 @@
 <tile id="4"><pictures><picture id="4"/></pictures></tile>
 </maps>
 
+<!--子弹定义-->
+<bullets>
+<bullet id="0"type="0"behaviourtype="0">
+	<attribute ap="10"speed="50"/>
+</bullet>
+</bullets>
 
+<!--飞机定义-->
 <planes>
-
-<plane id="0"type="0"camp="1"behaviortype="2"directiontype="1">
-	<attribute ap="10"dp="10"speed="10"hp="10"/>
+<plane id="0"type="1"camp="1"behaviourtype="2"directiontype="1"bullet="0">
+	<attribute ap="10"dp="10"speed="15"hp="20"/>
 </plane>
-<plane id="1"type="0"camp="1"behaviortype="2"directiontype="1">
-	<attribute ap="10"dp="10"speed="10"hp="10"/>
+<plane id="1"type="0"camp="1"behaviourtype="2"directiontype="1"bullet="0">
+	<attribute ap="10"dp="10"speed="15"hp="20"/>
 </plane>
-<plane id="2"type="0"camp="1"behaviortype="2"directiontype="1">
-	<attribute ap="10"dp="10"speed="10"hp="10"/>
+<plane id="2"type="1"camp="1"behaviourtype="2"directiontype="1"bullet="0">
+	<attribute ap="10"dp="10"speed="15"hp="10"/>
 </plane>
-<plane id="3"type="0"camp="1"behaviortype="2"directiontype="1">
-	<attribute ap="10"dp="10"speed="10"hp="10"/>
+<plane id="3"type="0"camp="1"behaviourtype="2"directiontype="1"bullet="0">
+	<attribute ap="10"dp="10"speed="15"hp="10"/>
 </plane>
-
 </planes>
 
 
 
 <events>
 <event id="0"type="0">
-	<parames plane="0"count="1"pos="0"/>
+	<parames plane="0"count="1"pos="10"/>
 </event>
 <event id="1"type="0">
-	<parames plane="0"count="1"pos="5"/>
+	<parames plane="1"count="4"pos="5"/>
 </event>
 
 
@@ -51,14 +56,49 @@
 <trigger id="0"type ="0"event="0">
 	<condition distance="20"/>
 </trigger>
-<trigger id="1"type ="0"event="0">
+
+<trigger id="1"type ="0"event="1">
 	<condition distance="40"/>
 </trigger>
 <trigger id="2"type ="0"event="0">
 	<condition distance="60"/>
 </trigger>
-
-
+<trigger id="2"type ="0"event="1">
+	<condition distance="80"/>
+</trigger>
+<trigger id="2"type ="0"event="0">
+	<condition distance="100"/>
+</trigger>
+<trigger id="2"type ="0"event="0">
+	<condition distance="120"/>
+</trigger>
+<trigger id="2"type ="0"event="1">
+	<condition distance="140"/>
+</trigger>
+<trigger id="2"type ="0"event="0">
+	<condition distance="160"/>
+</trigger>
+<trigger id="2"type ="0"event="0">
+	<condition distance="180"/>
+</trigger>
+<trigger id="2"type ="0"event="1">
+	<condition distance="200"/>
+</trigger>
+<trigger id="2"type ="0"event="0">
+	<condition distance="220"/>
+</trigger>
+<trigger id="2"type ="0"event="1">
+	<condition distance="240"/>
+</trigger>
+<trigger id="2"type ="0"event="1">
+	<condition distance="260"/>
+</trigger>
+<trigger id="2"type ="0"event="0">
+	<condition distance="280"/>
+</trigger>
+<trigger id="2"type ="0"event="1">
+	<condition distance="300"/>
+</trigger>
 </triggers>
 
 

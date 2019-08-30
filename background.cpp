@@ -2,10 +2,11 @@
 #include "picturemanager.h"
 #include "utils.h"
 
-#define MAXSCREENHEIGHT (110.0f)
+//#define MAXSCREENHEIGHT (110.0f)
 
 CBackGround::CBackGround(){
     m_nTileIndex = 0;
+    m_fSpeed = 1.0f;
 }
 CBackGround::~CBackGround(){
 
@@ -21,6 +22,7 @@ void CBackGround::Init( CXMLNode *pNode ){
     }
 
     CXMLNode _tMapsNode = pNode->GetNode( "maps" );
+    m_fSpeed = _tMapsNode.GetAttributeFloatValue("scrollspeed");
     CXMLNode _tTileNode = _tMapsNode.GetFirstNode();
     while( _tTileNode.Vaild() ){
         CStageTileInfo _tStageTileInfo;
@@ -51,7 +53,7 @@ void CBackGround::Final(){
     m_vTileInfoList.clear();
 }
 void CBackGround::Update( float fDelta ){
-    float _fDeltaDistance = 1.0f;
+    float _fDeltaDistance = m_fSpeed * fDelta;
     UpdateScrollQueue( _fDeltaDistance );
 }
 void CBackGround::Draw( CCanvas* pCanvas ){
@@ -65,7 +67,7 @@ void CBackGround::Draw( CCanvas* pCanvas ){
     }
 }
 void CBackGround::InitScrollItems(){
-    int32 _nScrollTop = MAXSCREENHEIGHT;
+    int32 _nScrollTop = CCanvas::m_tCanvasSize.Y;
     while( _nScrollTop > 0.0f ){
         //添加第一张图片
         CPictureInfo* _pPictureInfo = GetNextPictureInfo();
@@ -90,7 +92,7 @@ void CBackGround::UpdateScrollQueue( float fDeltaDistance ){
     for( auto it = m_vScrollQueue.begin(); it != m_vScrollQueue.end(); ){
         TScrollItemInfo* _pScrollItemInfo = &(*it);
         _pScrollItemInfo->m_fTop += fDeltaDistance;
-        if( _pScrollItemInfo->m_fTop > MAXSCREENHEIGHT ){   //移出了屏幕的
+        if( _pScrollItemInfo->m_fTop > CCanvas::m_tCanvasSize.Y ){   //移出了屏幕的
             it = m_vScrollQueue.erase( it );
         } else{
             _fMinScrollItemTop = Min<float>( _fMinScrollItemTop, _pScrollItemInfo->m_fTop );

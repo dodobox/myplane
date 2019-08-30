@@ -4,7 +4,7 @@
 
 CBehaviour0Control::CBehaviour0Control():
 CBehaviourControl(){
-    m_eBehaviourType = EBT_TYPE0;
+    m_eBehaviourType = EPBT_TYPE0;
 }
 CBehaviour0Control::~CBehaviour0Control(){
 
@@ -16,5 +16,5 @@ void CBehaviour0Control::Final(){
 
 }
 void CBehaviour0Control::Update( CPlane* pPlane, float fDelta ){
-    pPlane->m_tPosition.Y += 1.0f;
+    pPlane->m_tPosition.Y += pPlane->m_fSpeed * fDelta;
 }

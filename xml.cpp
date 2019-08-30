@@ -66,7 +66,7 @@ int32 CXMLNode::GetInt32Value(){
 float CXMLNode::GetFloatValue(){
     const char* _pValue = GetValue();
     if( _pValue ){
-        return atof( _pValue );
+        return (float)atof( _pValue );
     }
     return 0.0f;
 }
@@ -89,7 +89,7 @@ int32 CXMLNode::GetAttributeInt32Value( const char* strAttriName ){
 float CXMLNode::GetAttributeFloatValue( const char* strAttriName ){
     const char* _pValue = GetAttributeValue( strAttriName );
     if( _pValue ){
-        return atof( _pValue );
+        return (float)atof( _pValue );
     }
     return 0.0f;
 }

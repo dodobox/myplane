@@ -12,7 +12,7 @@ public:
     virtual void Final() = 0;
     virtual void Update( CPlane* pPlane, float fDelta ) = 0;
 
-    EBehaviourType m_eBehaviourType;
+    EPlaneBehaviourType m_eBehaviourType;
 };
 
 
