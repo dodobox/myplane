@@ -1,6 +1,7 @@
 #include "planeconfig.h"
 #include "xml.h"
 #include "picturemanager.h"
+#include "utils.h"
 
 static CPlaneConfig* _pThis = NULL;
 CPlaneConfig* CPlaneConfig::GetInterface(){
@@ -25,6 +26,7 @@ CPlaneConfig::~CPlaneConfig(){
 
 }
 void CPlaneConfig::Init(){
+    char _strText[1024];
     CXMLDocment _tXMLDoc( "planes.xml" );
     CXMLNode _tRoot = _tXMLDoc.GetNode( "planes" );
     CXMLNode _tNode = _tRoot.GetFirstNode();
@@ -36,7 +38,8 @@ void CPlaneConfig::Init(){
         _pPlaneInfo->m_tPicture.m_nAnchorX = _tPictureNode.GetAttributeInt32Value( "anchorx" );
         _pPlaneInfo->m_tPicture.m_nAnchorY = _tPictureNode.GetAttributeInt32Value( "anchory" );
         const char* _strFileName = _tPictureNode.GetAttributeValue("filename");
-        _pPlaneInfo->m_tPicture.m_pPictureInfo = CPictureManager::GetInterface()->GetPicture( _strFileName );
+        FormatStr( _strText, "planes/%s", _strFileName );
+        _pPlaneInfo->m_tPicture.m_pPictureInfo = CPictureManager::GetInterface()->GetPicture( _strText );
         CXMLNode _tEmitterNode = _tNode.GetNode( "emitter" );
         _pPlaneInfo->m_tEmitter.m_eEmitterType = (EBulletEmitterType)_tEmitterNode.GetAttributeInt32Value("type");
         _pPlaneInfo->m_tEmitter.m_nEmitterPoint = 0;

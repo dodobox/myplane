@@ -14,6 +14,8 @@
 #include "bulletmanager.h"
 #include "collisionmap.h"
 #include "bulletemittermanager.h"
+#include "sound.h"
+#include "guimanager.h"
 
 //////#define KEYDOWN(vk_code) ((GetAsyncKeyState(vk_code) & 0x8000)? 1 : 0)
 //////
@@ -363,10 +365,12 @@ int main(){
     CCanvas* _pCanvas = CCanvas::CreateCanvas( ECT_DCCAVNAS, 100, 150 );
     //CCanvas* _pCanvas = CCanvas::CreateCanvas( ECT_CONSOLECAVNAS, 100, 150 );
     CCollisionMap* _pCollisionMap = CCollisionMap::GetInterface();
+    CGUIManager* _pGUIManager = CGUIManager::GetInterface();
+
     CStageManager* _pStageManager = CStageManager::GetInterface();
     _pStageManager->ResetStage( 0 );
     _pPlaneManager->CreatePlayerPlane( EPT_TYPE0 );
-   
+    PlayBKSound("sound/background.wav");
     uint32 _nTime = GetTickCount();
     while( 1 ){
         uint32 _nCurTime = GetTickCount();
@@ -375,17 +379,23 @@ int main(){
         _pStageManager->Update( _fDelta );
         _pBulletManager->Update( _fDelta );
         _pPlaneManager->Update( _fDelta );
+        _pGUIManager->Update( _fDelta );
 
         _pCollisionMap->Clear();
         _pCanvas->Clear();
+
+
         _pStageManager->Draw( _pCanvas );
         _pPlaneManager->Draw( _pCanvas );
         _pBulletManager->Draw( _pCanvas );
+        _pGUIManager->Draw( _pCanvas );
+
         _pCanvas->Show();
         Sleep( 33 );
     }
     CBulletMitterManager::Release();
     CStageManager::Release();
+    CGUIManager::Release();
     CPlaneManager::Release();
     CBulletManager::Release();
     CCollisionMap::Release();

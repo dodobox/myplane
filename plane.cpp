@@ -1,6 +1,7 @@
 #include "plane.h"
 #include "utils.h"
 #include "collisionmap.h"
+#include "guimanager.h"
 
 CPlane::CPlane():
 m_nID( -1 ),
@@ -57,6 +58,10 @@ bool CPlane::Update( float fDelta ){
     bool _bIntersect = RectIntersectRect<float>( _fLeft, _fTop, _fRight, _fBottom, CCanvas::m_tSceneActiveRect.m_nLeft, CCanvas::m_tSceneActiveRect.m_nTop, CCanvas::m_tSceneActiveRect.m_nRight, CCanvas::m_tSceneActiveRect.m_nBottom );
     if( !_bIntersect ){
         return false;
+    }
+
+    if( m_eCamp == EPC_RED ){
+        CGUIManager::GetInterface()->UpdateInfo( EUUIT_0, m_nHP, 0 );
     }
 
     return true;

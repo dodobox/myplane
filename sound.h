@@ -6,7 +6,7 @@ enum EEffectSound{
 };
 
 void PlayBKSound( const char* strFileName );
-void PlaySound( EEffectSound eSound );
+void PlayEffectSound( EEffectSound eSound );
 
 
 #endif

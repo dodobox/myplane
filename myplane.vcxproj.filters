@@ -104,6 +104,24 @@
     <ClCompile Include="bulletemittermanager.cpp">
       <Filter>bulletemitter</Filter>
     </ClCompile>
+    <ClCompile Include="guimanager.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="uinode.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="uilabel.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="uiinformation.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="uiimage.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="textlibrary.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="playerplane0.h" />
@@ -211,6 +229,24 @@
     </ClInclude>
     <ClInclude Include="bulletemittermanager.h">
       <Filter>bulletemitter</Filter>
+    </ClInclude>
+    <ClInclude Include="guimanager.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="uinode.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="uilabel.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="uiinformation.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="uiimage.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="textlibrary.h">
+      <Filter>gui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

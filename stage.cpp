@@ -1,5 +1,6 @@
 #include "stage.h"
 #include "utils.h"
+#include "guimanager.h"
 
 float CStage::m_fStageDistance = 0.0f;
 float CStage::m_fStageTime = 0.0f;
@@ -27,6 +28,9 @@ void CStage::Final(){
 }
 void CStage::Update( float fDelta ){
     m_fStageDistance += m_pBackGround->m_fSpeed * fDelta;
+
+    CGUIManager::GetInterface()->UpdateInfo( EUUIT_2, (int32)m_fStageDistance, 1000 );
+
     m_pBackGround->Update( fDelta );
     m_pEventAndTrigger->Update( fDelta );
 }

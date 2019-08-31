@@ -2,6 +2,7 @@
 #include "plane.h"
 #include "bulletbase.h"
 #include "bulletmanager.h"
+#include "sound.h"
 
 CBulletEmitter::CBulletEmitter():
 m_eBulletEmitterType( EBET_UNKOWN ){
@@ -45,7 +46,8 @@ void CSingleBulletEmitter::Emittor( CPlane* pPlane ){
         }
         _pBullet->m_fAP = _pPlaneInstInfo->m_pBulletInstInfo->m_tAttribute.m_nAP;
         _pBullet->m_fSpeed = _pPlaneInstInfo->m_pBulletInstInfo->m_tAttribute.m_fSpeed;
-
     }
+
+    PlayEffectSound( EES_0 );
 }
 

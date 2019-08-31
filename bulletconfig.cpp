@@ -1,6 +1,7 @@
 #include "bulletconfig.h"
 #include "xml.h"
 #include "picturemanager.h"
+#include "utils.h"
 
 static CBulletConfig* _pThis = NULL;
 CBulletConfig* CBulletConfig::GetInterface(){
@@ -25,6 +26,7 @@ CBulletConfig::~CBulletConfig(){
 
 }
 void CBulletConfig::Init(){
+    char _strText[1024];
     CXMLDocment _tXMLDoc( "bullets.xml" );
     CXMLNode _tRoot = _tXMLDoc.GetNode( "bullets" );
     CXMLNode _tNode = _tRoot.GetFirstNode();
@@ -35,7 +37,8 @@ void CBulletConfig::Init(){
         _pBulletInfo->m_tPicture.m_nAnchorX = _tPictureNode.GetAttributeInt32Value( "anchorx" );
         _pBulletInfo->m_tPicture.m_nAnchorY = _tPictureNode.GetAttributeInt32Value( "anchory" );
         const char* _strFileName = _tPictureNode.GetAttributeValue( "filename" );
-        _pBulletInfo->m_tPicture.m_pPictureInfo = CPictureManager::GetInterface()->GetPicture( _strFileName );
+        FormatStr( _strText, "bullets/%s", _strFileName );
+        _pBulletInfo->m_tPicture.m_pPictureInfo = CPictureManager::GetInterface()->GetPicture( _strText );
 
         m_vBulletInfoList[_nType] = _pBulletInfo;
         _tNode = _tNode.GetNextNode();

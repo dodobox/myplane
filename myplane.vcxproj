@@ -162,6 +162,7 @@
     <ClCompile Include="behaviourcontrol.cpp" />
     <ClCompile Include="dccanvas.cpp" />
     <ClCompile Include="eventmanager.cpp" />
+    <ClCompile Include="guimanager.cpp" />
     <ClCompile Include="keyboardcontrol.cpp" />
     <ClCompile Include="myplane.cpp" />
     <ClCompile Include="picture.cpp" />
@@ -177,6 +178,11 @@
     <ClCompile Include="stageconfig.cpp" />
     <ClCompile Include="stageeventandtrigger.cpp" />
     <ClCompile Include="stagemanager.cpp" />
+    <ClCompile Include="textlibrary.cpp" />
+    <ClCompile Include="uiimage.cpp" />
+    <ClCompile Include="uiinformation.cpp" />
+    <ClCompile Include="uilabel.cpp" />
+    <ClCompile Include="uinode.cpp" />
     <ClCompile Include="utils.cpp" />
     <ClCompile Include="xml.cpp" />
   </ItemGroup>
@@ -201,6 +207,7 @@
     <ClInclude Include="behaviourcontrol.h" />
     <ClInclude Include="dccanvas.h" />
     <ClInclude Include="eventmanager.h" />
+    <ClInclude Include="guimanager.h" />
     <ClInclude Include="keyboardcontrol.h" />
     <ClInclude Include="picture.h" />
     <ClInclude Include="picturemanager.h" />
@@ -218,7 +225,12 @@
     <ClInclude Include="stagemanager.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="stb_image_resize.h" />
+    <ClInclude Include="textlibrary.h" />
     <ClInclude Include="types.h" />
+    <ClInclude Include="uiimage.h" />
+    <ClInclude Include="uiinformation.h" />
+    <ClInclude Include="uilabel.h" />
+    <ClInclude Include="uinode.h" />
     <ClInclude Include="utils.h" />
     <ClInclude Include="xml.h" />
   </ItemGroup>

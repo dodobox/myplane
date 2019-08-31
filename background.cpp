@@ -12,11 +12,13 @@ CBackGround::~CBackGround(){
 
 }
 void CBackGround::Init( CXMLNode *pNode ){
+    char _strText[1024];
     CXMLNode _tPicturesNode = pNode->GetNode( "pictures" );
     CXMLNode _tPicNode = _tPicturesNode.GetFirstNode();
     while( _tPicNode.Vaild() ){
         const char* _strFileName = _tPicNode.GetAttributeValue( "filename" );
-        CPictureInfo* _pPictureInfo = CPictureManager::GetInterface()->GetPicture( _strFileName );
+        FormatStr( _strText, "bk/%s", _strFileName );
+        CPictureInfo* _pPictureInfo = CPictureManager::GetInterface()->GetPicture( _strText );
         m_vPictureList.push_back( _pPictureInfo );
         _tPicNode = _tPicNode.GetNextNode();
     }

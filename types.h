@@ -148,6 +148,13 @@ enum EBulletEmitterType{
     EBET_COUNT,
 };
 
+enum EUIType{
+    EUT_NODE,
+    EUT_UIMANAGER,
+    EUT_LABEL,
+    EUT_IMAGE,
+    EUT_INFOMATIONDLG,
+};
 
 struct TIntPoint{
     int32 X, Y;
