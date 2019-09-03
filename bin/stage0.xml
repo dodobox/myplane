@@ -6,6 +6,8 @@
 <picture id="2"filename="bk2.png"/>
 <picture id="3"filename="bk3.png"/>
 <picture id="4"filename="bk4.png"/>
+<picture id="5"filename="stage0bk.png"/>
+
 </pictures>
 
 <maps scrollspeed="10">
@@ -14,7 +16,7 @@
 <tile id="2"><pictures><picture id="2"/></pictures></tile>
 <tile id="3"><pictures><picture id="3"/></pictures></tile>
 -->
-<tile id="4"><pictures><picture id="4"/></pictures></tile>
+<tile id="4"><pictures><picture id="5"/></pictures></tile>
 </maps>
 
 <!--×Óµ¯¶¨Òå-->

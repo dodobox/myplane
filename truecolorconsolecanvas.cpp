@@ -1,50 +1,44 @@
-#include "dccanvas.h"
+#include "truecolorconsolecanvas.h"
 #include "utils.h"
+#include <stdio.h>
 
-static uint32 _vFGColorTable[16] = {
-    RGB( 0,0,0 ),
-    RGB( 128,0,0 ),
-    RGB( 0,128,0 ),
-    RGB( 128,128,0 ),
-    RGB( 0,0,128 ),
-    RGB( 128,0,128 ),
-    RGB( 0,128,128 ),
-    RGB( 192,192,192 ),
-    RGB( 128,128,128 ),
-    RGB( 255,0,0 ),
-    RGB( 0,255,0 ),
-    RGB( 255,255,0 ),
-    RGB( 0,0,255 ),
-    RGB( 255,0,255 ),
-    RGB( 0,255,255 ),
-    RGB( 255,255,255 ),
-};
+#ifndef ENABLE_VIRTUAL_TERMINAL_PROCESSING
+#define ENABLE_VIRTUAL_TERMINAL_PROCESSING 0x0004
+#endif
 
-CDCCanvas::CDCCanvas():
+CTrueColorConsoleCanvas::CTrueColorConsoleCanvas():
 CCanvas(){
-    m_eCanvasType = ECT_DCCAVNAS;
+    m_eCanvasType = ECT_TRUECOLORCONSOLECANVAS;
 }
-CDCCanvas::~CDCCanvas(){
+CTrueColorConsoleCanvas::~CTrueColorConsoleCanvas(){
 
 }
-void CDCCanvas::Init( int32 nWidth, int32 nHeight ){
-    console = GetConsoleWindow();                      //获取控制台窗口句柄
-    console_hdc = GetDC( console );                      //获取绘图dc
+void CTrueColorConsoleCanvas::Init( int32 nWidth, int32 nHeight ){
+    HANDLE hOut = GetStdHandle( STD_OUTPUT_HANDLE );                      //获取控制台窗口句柄
+    DWORD dwMode = 0;
+    if( !GetConsoleMode( hOut, &dwMode ) ){
+        return;
+    }
+
+    dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+    if( !SetConsoleMode( hOut, dwMode ) ){
+        return;
+    }
     m_ppFGCanvas = New2DArray<uint32>( nWidth, nHeight );
 }
-void CDCCanvas::Final(){
+void CTrueColorConsoleCanvas::Final(){
     Delete2DArray( m_ppFGCanvas );
-    ReleaseDC( console, console_hdc );
-    DeleteDC( console_hdc );
+    //ReleaseDC( console, console_hdc );
+    //DeleteDC( console_hdc );
 }
-void CDCCanvas::Clear(){
+void CTrueColorConsoleCanvas::Clear(){
     memset( m_ppFGCanvas[0], 0, m_tCanvasSize.X * m_tCanvasSize.Y * sizeof( uint32 ) );
 }
-void* CDCCanvas::GetBuffer(){
+void* CTrueColorConsoleCanvas::GetBuffer(){
     return NULL;
 }
 
-int32 CDCCanvas::Get16ColorIndex( uint32 nColor ){
+int32 CTrueColorConsoleCanvas::Get16ColorIndex( uint32 nColor ){
     // 15 White   0xFFFFFF
     // 14 Aqua    0xffFF00   
     // 13 Fuchsia 0xFF00FF
@@ -175,7 +169,7 @@ int32 CDCCanvas::Get16ColorIndex( uint32 nColor ){
     return _nIndex16;
 }
 
-bool CDCCanvas::SetPixel( int32 x, int32 y, uint32 nColor ){
+bool CTrueColorConsoleCanvas::SetPixel( int32 x, int32 y, uint32 nColor ){
    // return false;
     if( x < 0 || x >= m_tCanvasSize.X || y < 0 || y >= m_tCanvasSize.Y )return false;
 
@@ -203,7 +197,7 @@ bool CDCCanvas::SetPixel( int32 x, int32 y, uint32 nColor ){
 //    }
 //    m_ppFGCanvas[y][x] = _nIndex;
 //}
-void CDCCanvas::DrawRect( int32 x, int32 y, int32 nWidth, int32 nHeight, uint32* pColors ){
+void CTrueColorConsoleCanvas::DrawRect( int32 x, int32 y, int32 nWidth, int32 nHeight, uint32* pColors ){
     uint32* _pColors = pColors;
     for( int32 i = 0; i < nHeight; i ++ ){
         for( int32 j = 0; j < nWidth; j ++ ){
@@ -213,19 +207,24 @@ void CDCCanvas::DrawRect( int32 x, int32 y, int32 nWidth, int32 nHeight, uint32*
     }
 }
 
-void CDCCanvas::Show(){
+void CTrueColorConsoleCanvas::Show(){
+    system( "cls" );
+    //HBITMAP hBitmap = ::CreateBitmap( m_tCanvasSize.X, m_tCanvasSize.Y, 1, 32, m_ppFGCanvas[0] );
+    //HDC hMemDc = ::CreateCompatibleDC( console_hdc );
+    //HBITMAP hOldBitmap = (HBITMAP)::SelectObject( hMemDc, hBitmap );
+    //::BitBlt( console_hdc, 0, 0, m_tCanvasSize.X, m_tCanvasSize.Y, hMemDc, 0, 0, SRCCOPY );
+    //::SelectObject( hMemDc, hOldBitmap );
+    //::DeleteObject( hBitmap );
 
-    HBITMAP hBitmap = ::CreateBitmap( m_tCanvasSize.X, m_tCanvasSize.Y, 1, 32, m_ppFGCanvas[0] );
-    HDC hMemDc = ::CreateCompatibleDC( console_hdc );
-    HBITMAP hOldBitmap = (HBITMAP)::SelectObject( hMemDc, hBitmap );
-    ::BitBlt( console_hdc, 0, 0, m_tCanvasSize.X, m_tCanvasSize.Y, hMemDc, 0, 0, SRCCOPY );
-    ::SelectObject( hMemDc, hOldBitmap );
-    ::DeleteObject( hBitmap );
-
-    //for( int i = 0; i < m_tCanvasSize.Y; i++ ){
-    //    for( int j = 0; j < m_tCanvasSize.X; j++ ){
-    //        ::SetPixel( console_hdc, j, i, _vFGColorTable[m_ppFGCanvas[i][j]] );
-    //    }
-    //}
+    for( int i = 0; i < m_tCanvasSize.Y; i++ ){
+        for( int j = 0; j < m_tCanvasSize.X; j++ ){
+            //::SetPixel( console_hdc, j, i, _vFGColorTable[m_ppFGCanvas[i][j]] );
+            //m_ppFGCanvas[ i ][ j ];
+            int32 _R, _G, _B;
+            GETCOLORRGB( m_ppFGCanvas[ i ][ j ], _R, _G, _B );
+            printf( "\x1B[38;2;%u;%u;%umX", _R, _G, _B );
+        }
+        putchar('\n');
+    }
 
 }

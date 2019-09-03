@@ -179,6 +179,7 @@
     <ClCompile Include="stageeventandtrigger.cpp" />
     <ClCompile Include="stagemanager.cpp" />
     <ClCompile Include="textlibrary.cpp" />
+    <ClCompile Include="truecolorconsolecanvas.cpp" />
     <ClCompile Include="uiimage.cpp" />
     <ClCompile Include="uiinformation.cpp" />
     <ClCompile Include="uilabel.cpp" />
@@ -226,6 +227,7 @@
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="stb_image_resize.h" />
     <ClInclude Include="textlibrary.h" />
+    <ClInclude Include="truecolorconsolecanvas.h" />
     <ClInclude Include="types.h" />
     <ClInclude Include="uiimage.h" />
     <ClInclude Include="uiinformation.h" />

@@ -362,8 +362,10 @@ int main(){
     CBulletMitterManager::GetInterface();
     CBulletManager* _pBulletManager = CBulletManager::GetInterface();
     CPlaneManager* _pPlaneManager = CPlaneManager::GetInterface();
-    CCanvas* _pCanvas = CCanvas::CreateCanvas( ECT_DCCAVNAS, 100, 150 );
-    //CCanvas* _pCanvas = CCanvas::CreateCanvas( ECT_CONSOLECAVNAS, 100, 150 );
+    //CCanvas* _pCanvas = CCanvas::CreateCanvas( ECT_DCCAVNAS, 100, 150 );
+    CCanvas* _pCanvas = CCanvas::CreateCanvas( ECT_CONSOLECAVNAS, 100, 150 );
+    //CCanvas* _pCanvas = CCanvas::CreateCanvas( ECT_TRUECOLORCONSOLECANVAS, 100, 150 );
+    
     CCollisionMap* _pCollisionMap = CCollisionMap::GetInterface();
     CGUIManager* _pGUIManager = CGUIManager::GetInterface();
 
@@ -419,7 +421,119 @@ int main(){
 
 
 
+////
+////
+////#include <windows.h>
+////#include <stdio.h>
+////
+////#ifndef ENABLE_VIRTUAL_TERMINAL_PROCESSING
+////#define ENABLE_VIRTUAL_TERMINAL_PROCESSING 0x0004
+////#endif
+////
+////
+////
+////
+////#include <stdio.h>
+////#include <wchar.h>
+////#include <windows.h>
+////
+////int main(){
+////    // Set output mode to handle virtual terminal sequences
+////    HANDLE hOut = GetStdHandle( STD_OUTPUT_HANDLE );
+////    if( hOut == INVALID_HANDLE_VALUE ){
+////        return GetLastError();
+////    }
+////
+////    DWORD dwMode = 0;
+////    if( !GetConsoleMode( hOut, &dwMode ) ){
+////        return GetLastError();
+////    }
+////
+////    dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+////    if( !SetConsoleMode( hOut, dwMode ) ){
+////        return GetLastError();
+////    }
+////
+////    // Try some Set Graphics Rendition (SGR) terminal escape sequences
+////    wprintf( L"\x1b[31mThis text has a red foreground using SGR.31.\r\n" );
+////    wprintf( L"\x1b[1mThis text has a bright (bold) red foreground using SGR.1 to affect the previous color setting.\r\n" );
+////    wprintf( L"\x1b[mThis text has returned to default colors using SGR.0 implicitly.\r\n" );
+////    wprintf( L"\x1b[34;46mThis text shows the foreground and background change at the same time.\r\n" );
+////    wprintf( L"\x1b[0mThis text has returned to default colors using SGR.0 explicitly.\r\n" );
+////    wprintf( L"\x1b[31;32;33;34;35;36;101;102;103;104;105;106;107mThis text attempts to apply many colors in the same command. Note the colors are applied from left to right so only the right-most option of foreground cyan (SGR.36) and background bright white (SGR.107) is effective.\r\n" );
+////    wprintf( L"\x1b[39mThis text has restored the foreground color only.\r\n" );
+////    wprintf( L"\x1b[49mThis text has restored the background color only.\r\n" );
+////
+////
+////    wprintf( L"\x1B[38;2;255;255;0mThis text has restored the background color only.\r\n" );
+////    return 0;
+////}
 
+
+//
+//
+//#include <stdio.h>
+//#include <wchar.h>
+//#include <windows.h>
+//
+//
+//void SetPrintColor( unsigned char r, unsigned char g, unsigned char b ){//必须在vt激活后才可用
+//    printf( "\x1B[38;2;%u;%u;%um", r, g, b );
+//}
+//
+//int main(){
+//    // Set output mode to handle virtual terminal sequences
+//    HANDLE hOut = GetStdHandle( STD_OUTPUT_HANDLE );
+//    if( hOut == INVALID_HANDLE_VALUE ){
+//        return GetLastError();
+//    }
+//
+//    DWORD dwMode = 0;
+//    if( !GetConsoleMode( hOut, &dwMode ) ){
+//        return GetLastError();
+//    }
+//
+//    dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+//    if( !SetConsoleMode( hOut, dwMode ) ){
+//        return GetLastError();
+//    }
+//
+//    for( int32 i = 0; i < 256; i ++ ){
+//        SetPrintColor( i, i, i );
+//        printf("X");
+//        if( i % 16 == 15 ){
+//            printf( "   " );
+//            for( int32 j = i + 1; j < i + 1 + 16; j ++ ){
+//                SetPrintColor( i, 0, 0 );
+//                printf( "X" );
+//            }
+//            putchar( '\n' );
+//        }
+//    }
+//
+//    // Try some Set Graphics Rendition (SGR) terminal escape sequences
+//    //wprintf( L"\x1b[31mThis text has a red foreground using SGR.31.\r\n" );
+//    //wprintf( L"\x1b[1mThis text has a bright (bold) red foreground using SGR.1 to affect the previous color setting.\r\n" );
+//    //wprintf( L"\x1b[mThis text has returned to default colors using SGR.0 implicitly.\r\n" );
+//    //wprintf( L"\x1b[34;46mThis text shows the foreground and background change at the same time.\r\n" );
+//    //wprintf( L"\x1b[0mThis text has returned to default colors using SGR.0 explicitly.\r\n" );
+//    //wprintf( L"\x1b[31;32;33;34;35;36;101;102;103;104;105;106;107mThis text attempts to apply many colors in the same command. Note the colors are applied from left to right so only the right-most option of foreground cyan (SGR.36) and background bright white (SGR.107) is effective.\r\n" );
+//    //wprintf( L"\x1b[39mThis text has restored the foreground color only.\r\n" );
+//    //wprintf( L"\x1b[49mThis text has restored the background color only.\r\n" );
+//
+//
+//   // printf( "\x1B[38;2;%u;%u;%um", 255, 0, 0 );
+//
+//    //for( int i = 0; i <= 255; i++ ){
+//    //    for( int j = 0; j <= 255; j++ ){
+//    //        for( int k = 0; k <= 255; k++ ){
+//    //            wprintf( L"\x1b[38;2;%d;%d;%dmHello,World!!\t", i, j, k );
+//    //        }
+//    //    }
+//    //}
+//
+//    return 0;
+//}
 
 
 

@@ -1,6 +1,7 @@
 #include "canvas.h"
 #include "consolecanvas.h"
 #include "dccanvas.h"
+#include "truecolorconsolecanvas.h"
 
 TIntPoint CCanvas::m_tCanvasSize = { 0,0 };
 TIntRect  CCanvas::m_tSceneActiveRect = { 0,0,0,0 };
@@ -11,6 +12,7 @@ CCanvas* CCanvas::CreateCanvas( ECanvasType eCavansType, int32 nWidth, int32 nHe
     switch( eCavansType ){
     case ECT_CONSOLECAVNAS : _pThis = NEW CConsoleCanvas(); break;
     case ECT_DCCAVNAS: _pThis = NEW CDCCanvas(); break;
+    case ECT_TRUECOLORCONSOLECANVAS: _pThis = NEW CTrueColorConsoleCanvas(); break;
     }
     _pThis->Init( nWidth, nHeight );
     return _pThis;

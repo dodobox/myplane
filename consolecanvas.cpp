@@ -3,21 +3,21 @@
 
 static uint16 _vFGColorTable[16] = {
     0,
-    FOREGROUND_RED,
-    FOREGROUND_GREEN,
-    FOREGROUND_RED | FOREGROUND_GREEN,
-    FOREGROUND_BLUE,
-    FOREGROUND_RED | FOREGROUND_BLUE,
-    FOREGROUND_GREEN | FOREGROUND_BLUE,
-    FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE,
-    FOREGROUND_INTENSITY,
-    FOREGROUND_INTENSITY | FOREGROUND_RED,
-    FOREGROUND_INTENSITY | FOREGROUND_GREEN,
-    FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN,
-    FOREGROUND_INTENSITY | FOREGROUND_BLUE,
-    FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_BLUE,
-    FOREGROUND_INTENSITY | FOREGROUND_GREEN | FOREGROUND_BLUE,
-    FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE,
+    BACKGROUND_RED,
+    BACKGROUND_GREEN,
+    BACKGROUND_RED | BACKGROUND_GREEN,
+    BACKGROUND_BLUE,
+    BACKGROUND_RED | BACKGROUND_BLUE,
+    BACKGROUND_GREEN | BACKGROUND_BLUE,
+    BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE,
+    BACKGROUND_INTENSITY,
+    BACKGROUND_INTENSITY | BACKGROUND_RED,
+    BACKGROUND_INTENSITY | BACKGROUND_GREEN,
+    BACKGROUND_INTENSITY | BACKGROUND_RED | BACKGROUND_GREEN,
+    BACKGROUND_INTENSITY | BACKGROUND_BLUE,
+    BACKGROUND_INTENSITY | BACKGROUND_RED | BACKGROUND_BLUE,
+    BACKGROUND_INTENSITY | BACKGROUND_GREEN | BACKGROUND_BLUE,
+    BACKGROUND_INTENSITY | BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE,
 };
 
 ////public int To8Color(){
@@ -82,6 +82,7 @@ void CConsoleCanvas::Final(){
 void CConsoleCanvas::Clear(){
   //  memset( m_ppBKCanvas[0], 0, m_tCanvasSize.X * m_tCanvasSize.Y );
     memset( m_ppFGCanvas[0], 0, m_tCanvasSize.X * m_tCanvasSize.Y );
+
 }
 void* CConsoleCanvas::GetBuffer(){
     return m_ppCharInfo[ 0 ];
@@ -228,20 +229,20 @@ bool CConsoleCanvas::SetPixel( int32 x, int32 y, uint32 nColor ){
     m_ppFGCanvas[y][x] = _vFGColorTable[_nIndex];
     return true;
 }
-void CConsoleCanvas::SetBKPixel( int32 x, int32 y, uint32 nColor ){
-  //  return;
-    if( x < 0 || x >= m_tCanvasSize.X || y < 0 || y >= m_tCanvasSize.Y )return;
-    int32 _nIndex = Get16ColorIndex( nColor );
-    if( _nIndex < 0 ){
-        return;
-    }
-    m_ppFGCanvas[y][x] = _vFGColorTable[_nIndex];
-}
+//void CConsoleCanvas::SetBKPixel( int32 x, int32 y, uint32 nColor ){
+//  //  return;
+//    if( x < 0 || x >= m_tCanvasSize.X || y < 0 || y >= m_tCanvasSize.Y )return;
+//    int32 _nIndex = Get16ColorIndex( nColor );
+//    if( _nIndex < 0 ){
+//        return;
+//    }
+//    m_ppFGCanvas[y][x] = _vFGColorTable[_nIndex];
+//}
 void CConsoleCanvas::DrawRect( int32 x, int32 y, int32 nWidth, int32 nHeight, uint32* pColors ){
     uint32* _pColors = pColors;
     for( int32 i = 0; i < nHeight; i ++ ){
         for( int32 j = 0; j < nWidth; j ++ ){
-            SetBKPixel( x + j, y + i, *_pColors );
+            SetPixel( x + j, y + i, *_pColors );
             _pColors ++;
         }
     }
@@ -251,7 +252,8 @@ void CConsoleCanvas::Show(){
     for( int i = 0; i < m_tCanvasSize.Y; i++ ){
         for( int j = 0; j < m_tCanvasSize.X; j++ ){
             m_ppCharInfo[i][j].Attributes = m_ppFGCanvas[i][j];
-            m_ppCharInfo[i][j].Char.AsciiChar = m_ppFGCanvas[i][j] == 0 ? m_nNullCode : m_nFullCode;
+            //m_ppCharInfo[i][j].Char.AsciiChar = m_ppFGCanvas[i][j] == 0 ? m_nNullCode : m_nFullCode;
+            m_ppCharInfo[ i ][ j ].Char.AsciiChar = m_nNullCode;
         }
     }
 

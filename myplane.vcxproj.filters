@@ -122,6 +122,9 @@
     <ClCompile Include="textlibrary.cpp">
       <Filter>gui</Filter>
     </ClCompile>
+    <ClCompile Include="truecolorconsolecanvas.cpp">
+      <Filter>canvas</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="playerplane0.h" />
@@ -247,6 +250,9 @@
     </ClInclude>
     <ClInclude Include="textlibrary.h">
       <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="truecolorconsolecanvas.h">
+      <Filter>canvas</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
