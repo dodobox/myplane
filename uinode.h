@@ -4,7 +4,7 @@
 #include "canvas.h"
 #include <list>
 
-class CUINode{
+class CUINode: public CMemObject{
 public:
     CUINode();
     virtual ~CUINode();

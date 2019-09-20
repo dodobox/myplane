@@ -7,7 +7,7 @@
 #include "stageeventandtrigger.h"
 #include "canvas.h"
 
-class CStage{
+class CStage: public CMemObject{
 public:
     static float m_fStageDistance;
     static float m_fStageTime;

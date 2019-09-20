@@ -10,7 +10,7 @@ public:
     CUIInfoMationDlg();
     virtual ~CUIInfoMationDlg();
     virtual void Init();
-
+    virtual void Final();
     void SetHP( int32 nHP );
     void SetScore( int32 nScore );
     void SetDistance( int32 nDistance, int32 nMaxDistance );

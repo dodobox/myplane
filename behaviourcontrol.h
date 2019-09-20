@@ -4,7 +4,7 @@
 #include "types.h"
 
 class CPlane;
-class CBehaviourControl{
+class CBehaviourControl: public CMemObject{
 public:
     CBehaviourControl();
     virtual ~CBehaviourControl();

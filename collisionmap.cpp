@@ -27,13 +27,13 @@ CCollisionMap::~CCollisionMap(){
 }
 void CCollisionMap::Init( int32 x, int32 y ){
     m_tSize = { x, y };
-    m_ppCollisionMap[EPC_RED] = New2DArray<CPlane*>( x, y );
-    m_ppCollisionMap[EPC_BLUE] = New2DArray<CPlane*>( x, y );
+    m_ppCollisionMap[EPC_RED] = NEW2DARRAY( CPlane*, x, y );
+    m_ppCollisionMap[EPC_BLUE] = NEW2DARRAY( CPlane*, x, y );
     Clear();
 }
 void CCollisionMap::Final(){
-    Delete2DArray<CPlane*>( m_ppCollisionMap[0] );
-    Delete2DArray<CPlane*>( m_ppCollisionMap[1] );
+    DELETE2DARRAY( CPlane*, m_ppCollisionMap[EPC_RED] );
+    DELETE2DARRAY( CPlane*, m_ppCollisionMap[EPC_BLUE] );
 }
 void CCollisionMap::Clear(){
     memset( m_ppCollisionMap[EPC_RED][0], 0, sizeof( CPlane* ) * m_tSize.X * m_tSize.Y );

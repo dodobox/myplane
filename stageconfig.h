@@ -4,7 +4,7 @@
 #include "types.h"
 
 #define MAXPICTUREID 4
-class CStageTileInfo{
+class CStageTileInfo: public CMemObject{
 public:
     int32 m_vPictureIDs[ MAXPICTUREID ];
     int32 m_nPicture;
@@ -35,7 +35,7 @@ public:
     }m_tAttribute;
 };
 
-class CStageEventInfo{
+class CStageEventInfo: public CMemObject{
 public:
     EEventType m_eEventType;
     union{
@@ -51,7 +51,7 @@ public:
 
 };
 
-class CStageTriggerInfo{
+class CStageTriggerInfo: public CMemObject{
 public:
     ETriggerType m_eTriggerType;
     int32 m_nEventID;

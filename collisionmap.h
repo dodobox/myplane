@@ -4,7 +4,7 @@
 #include "types.h"
 
 class CPlane;
-class CCollisionMap{
+class CCollisionMap: public CMemObject{
 public:
     static CCollisionMap* GetInterface();
     static void Release();

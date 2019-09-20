@@ -4,7 +4,7 @@
 #include "types.h"
 
 class CPlane;
-class CBulletEmitter{
+class CBulletEmitter: public CMemObject{
 public:
     CBulletEmitter();
     virtual ~CBulletEmitter();

@@ -1,12 +1,13 @@
 #ifndef __PLANE_H__
 #define __PLANE_H__
 
+
 #include "types.h"
 #include "canvas.h"
 #include "planeconfig.h"
 #include "stageconfig.h"
 
-class CPlane{
+class CPlane: public CMemObject{
 public:
     CPlane();
     virtual ~CPlane();

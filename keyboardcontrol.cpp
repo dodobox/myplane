@@ -2,8 +2,8 @@
 #include <Windows.h>
 #include "plane.h"
 #include "canvas.h"
-#define KEYDOWN(vk_code) ((GetAsyncKeyState(vk_code) & 0x8000)? 1 : 0)
 
+#define KEYDOWN(vk_code) ((GetAsyncKeyState(vk_code) & 0x8000)? 1 : 0)
 
 CKeyboardControl::CKeyboardControl():
 CBehaviourControl(){
@@ -24,6 +24,7 @@ void CKeyboardControl::Update( CPlane* pPlane, float fDelta ){
     int32 _nUp = KEYDOWN( 'W' );
     int32 _nDown = KEYDOWN( 'S' );
     int32 _nFire = KEYDOWN( VK_SPACE );
+    int32 _bDebug = KEYDOWN( VK_F1 );
 
     float _fX = pPlane->m_tPosition.X;
     float _fY = pPlane->m_tPosition.Y;
@@ -60,6 +61,12 @@ void CKeyboardControl::Update( CPlane* pPlane, float fDelta ){
     }
     if( _nFire ){
         pPlane->Fire( 0 );
+    }
+
+    if( _bDebug ){
+        mem_getsysallocsize();
+        DumpIdle();
+        DumpLeak();
     }
 
     pPlane->m_tPosition.X = _fX;

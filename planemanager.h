@@ -5,7 +5,7 @@
 #include "plane.h"
 #include <list>
 
-class CPlaneManager{
+class CPlaneManager: public CMemObject{
 public:
     static CPlaneManager* GetInterface();
     static void Release();

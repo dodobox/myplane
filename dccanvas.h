@@ -2,7 +2,7 @@
 #define __DCCANVS_H__
 
 #include "canvas.h"
-#include <Windows.h>
+
 
 class CDCCanvas: public CCanvas{
 public:
@@ -18,8 +18,8 @@ public:
     //void SetBKPixel( int32 x, int32 y, uint32 nColor );
     int32 Get16ColorIndex( uint32 nColor );
 
-    HWND console;
-    HDC  console_hdc;
+    uint32 console;
+    uint32   console_hdc;
     uint32** m_ppFGCanvas;
 };
 

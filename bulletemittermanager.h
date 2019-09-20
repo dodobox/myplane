@@ -4,12 +4,12 @@
 #include "types.h"
 #include "bulletemitter.h"
 
-class CBulletMitterManager{
+class CBulletMitterManager: public CMemObject{
 public:
     static CBulletMitterManager* GetInterface();
     static void Release();
     CBulletMitterManager();
-    ~CBulletMitterManager();
+    virtual ~CBulletMitterManager();
     void Init();
     void Final();
     CBulletEmitter* GetEmitter( EBulletEmitterType eEmitter );

@@ -3,7 +3,7 @@
 
 #include "behaviourcontrol.h"
 
-class CBehaviourControlManager{
+class CBehaviourControlManager: public CMemObject{
 public:
     static CBehaviourControlManager* GetInterface();
     static void Release();

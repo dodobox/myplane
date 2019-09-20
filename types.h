@@ -1,25 +1,28 @@
 #ifndef __TYPES_H__
 #define __TYPES_H__
 
+#include <Windows.h>
+#include "memutile.h"
+
 #ifdef NULL
 #undef NULL
 #endif
 #define NULL 0
 
-#ifdef NEW
-#undef NEW
-#endif
-#define NEW new
-
-#ifdef DELETE
-#undef DELETE
-#endif
-#define DELETE( p ) if( p ) delete p, p = 0;
-
-#ifdef DELETEARRAY
-#undef DELETEARRAY
-#endif
-#define DELETEARRAY( p ) if( p ) delete[] p, p = 0;
+//#ifdef NEW
+//#undef NEW
+//#endif
+//#define NEW new
+//
+//#ifdef DELETE
+//#undef DELETE
+//#endif
+//#define DELETE( p ) if( p ) delete p, p = 0;
+//
+//#ifdef DELETEARRAY
+//#undef DELETEARRAY
+//#endif
+//#define DELETEARRAY( p ) if( p ) delete[] p, p = 0;
 
 typedef unsigned char byte;
 typedef short int16;
@@ -29,23 +32,25 @@ typedef unsigned int uint32;
 typedef void* object32;
 
 
-template<class T>
-T** New2DArray( int32 x, int32 y ){
-    T** p = NEW T*[ y ];
-    p[ 0 ] = NEW T[ x * y ];
-    for( int32 i = 1; i < y; i++ )
-        p[ i ] = p[ i - 1 ] + x;
-    return p;
-}
-
-template<class T>
-void Delete2DArray( T** &p ){
-    if( p ){
-        delete[] p[ 0 ];
-        delete[] p;
-    }
-    p = NULL;
-}
+//template<class T>
+//T** New2DArray( int32 x, int32 y ){
+//    //T** p = NEW T*[ y ];
+//    //p[ 0 ] = NEW T[ x * y ];
+//    T** p = (T**)MALLOC( sizeof( T* ) * y );
+//    p[ 0 ] = (T*)MALLOC( sizeof(T) * ( x * y ) );
+//    for( int32 i = 1; i < y; i++ )
+//        p[ i ] = p[ i - 1 ] + x;
+//    return p;
+//}
+//
+//template<class T>
+//void Delete2DArray( T** &p ){
+//    if( p ){
+//        FREE( p[ 0 ]);
+//        FREE( p );
+//    }
+//    p = NULL;
+//}
 
 enum ECanvasType{
     ECT_UNKOWN = -1,
@@ -147,6 +152,16 @@ enum EBulletEmitterType{
     EBET_0,
     EBET_1,
     EBET_COUNT,
+};
+
+enum EEffectType{
+    EEffectT_TYPE0,
+    EEffectT_TYPE1,
+    EEffectT_TYPE2,
+    EEffectT_TYPE3,
+    EEffectT_TYPE4,
+    EEffectT_TYPE5,
+    EEffectT_COUNT,
 };
 
 enum EUIType{

@@ -4,7 +4,7 @@
 #include "types.h"
 
 class CBulletBase;
-class CBulletBehaviourControl{
+class CBulletBehaviourControl: public CMemObject{
 public:
     CBulletBehaviourControl();
     virtual ~CBulletBehaviourControl();

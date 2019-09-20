@@ -1,8 +1,6 @@
 #ifndef WINDFORCE_SYSTEM_XML_H_
 #define WINDFORCE_SYSTEM_XML_H_
 
-//#include "windforce.h"
-//#include "datastream.h"
 #include "types.h"
 
 class CXMLNode{

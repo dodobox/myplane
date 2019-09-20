@@ -21,6 +21,7 @@ void CUINode::SetPosition( int32 x, int32 y ){
 void CUINode::Clear(){
     for( auto it = m_vNodeList.begin(); it != m_vNodeList.end(); it ++ ){
         CUINode* _pNode = *it;
+        _pNode->Final();
         DELETE( _pNode );
     }
     m_vNodeList.clear();

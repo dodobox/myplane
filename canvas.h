@@ -3,11 +3,12 @@
 
 #include "types.h"
 
-class CCanvas{
+class CCanvas: public CMemObject{
 public:
     static TIntPoint m_tCanvasSize;
     static TIntRect  m_tSceneActiveRect;
     static CCanvas* CreateCanvas( ECanvasType eCavansType, int32 nWidth, int32 nHeight );
+    static void Release();
     static CCanvas* GetInterface();
     CCanvas();
     virtual ~CCanvas();

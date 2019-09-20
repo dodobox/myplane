@@ -8,6 +8,7 @@ CPlane0::CPlane0():
 CPlane(){
     m_eType = EPT_TYPE0;
     CPlane::InitPlane();
+    m_fFireTime = 0.0f;
 }
 CPlane0::~CPlane0(){
 

@@ -42,6 +42,10 @@ void CUIInfoMationDlg::Init(){
     AddChild( m_pScoreLabel );
     CUINode::Init();
 }
+
+void CUIInfoMationDlg::Final(){
+    CUINode::Final();
+}
 void CUIInfoMationDlg::SetHP( int32 nHP ){
     char _strText[1024];
     if( nHP != m_nHP ){

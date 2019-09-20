@@ -6,7 +6,7 @@
 #include <vector>
 #include <list>
 
-class CStageEventAndTrigger{
+class CStageEventAndTrigger: public CMemObject{
 public:
     CStageEventAndTrigger();
     ~CStageEventAndTrigger();

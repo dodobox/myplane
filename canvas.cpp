@@ -3,6 +3,7 @@
 #include "dccanvas.h"
 #include "truecolorconsolecanvas.h"
 
+
 TIntPoint CCanvas::m_tCanvasSize = { 0,0 };
 TIntRect  CCanvas::m_tSceneActiveRect = { 0,0,0,0 };
 static CCanvas* _pThis = NULL;
@@ -16,6 +17,13 @@ CCanvas* CCanvas::CreateCanvas( ECanvasType eCavansType, int32 nWidth, int32 nHe
     }
     _pThis->Init( nWidth, nHeight );
     return _pThis;
+}
+
+void CCanvas::Release(){
+    if( _pThis ){
+        _pThis->Final();
+        DELETE( _pThis );
+    }
 }
 CCanvas* CCanvas::GetInterface(){
     return _pThis;

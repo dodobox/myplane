@@ -5,7 +5,7 @@
 #include "picture.h"
 #include <vector>
 
-class CBulletInfo{
+class CBulletInfo: public CMemObject{
 public:
     EBulletType m_eType;
     struct{
@@ -15,7 +15,7 @@ public:
     }m_tPicture;
 };
 
-class CBulletConfig{
+class CBulletConfig: public CMemObject{
 public:
     static CBulletConfig* GetInterface();
     static void Release();

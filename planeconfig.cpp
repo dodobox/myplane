@@ -57,7 +57,9 @@ void CPlaneConfig::Init(){
 
 }
 void CPlaneConfig::Final(){
-
+    for( int32 i = 0; i < EPT_COUNT; i ++ ){
+        DELETE( m_vPlaneInfoList[i] );
+    }
 }
 CPlaneInfo* CPlaneConfig::GetPlaneInfo( EPlaneType eType ){
     return m_vPlaneInfoList[ eType ];

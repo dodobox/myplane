@@ -3,7 +3,7 @@
 
 #include "bulletbehaviourcontrol.h"
 
-class CBulletBehaviourControlManager{
+class CBulletBehaviourControlManager: public CMemObject{
 public:
     static CBulletBehaviourControlManager* GetInterface();
     static void Release();

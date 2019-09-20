@@ -4,7 +4,7 @@
 #include "stage.h"
 #include "canvas.h"
 
-class CStageManager{
+class CStageManager: public CMemObject{
 public:
     static CStageManager* GetInterface();
     static void Release();

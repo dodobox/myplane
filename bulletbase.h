@@ -5,7 +5,7 @@
 #include "canvas.h"
 #include "bulletconfig.h"
 
-class CBulletBase{
+class CBulletBase: public CMemObject{
 public:
     CBulletBase();
     virtual ~CBulletBase();

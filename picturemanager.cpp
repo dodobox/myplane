@@ -47,7 +47,11 @@ void CPictureManager::Init(){
     ////////}
 }
 void CPictureManager::Final(){
-
+    for( auto it = m_vPictureInfoList.begin(); it != m_vPictureInfoList.end(); it ++ ){
+        CPictureInfo* _pPictureInfo = it->second;
+        DELETE( _pPictureInfo );
+    }
+    m_vPictureInfoList.clear();
 }
 
 CPictureInfo* CPictureManager::GetPicture( const char* strFileName ){

@@ -3,7 +3,7 @@
 
 #include "types.h"
 
-class CPictureInfo{
+class CPictureInfo: public CMemObject{
 public:
     CPictureInfo();
     ~CPictureInfo();

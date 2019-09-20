@@ -4,7 +4,7 @@
 #include "picture.h"
 #include <map>
 
-class CPictureManager{
+class CPictureManager: public CMemObject{
 public:
     static CPictureManager* GetInterface();
     static void Release();

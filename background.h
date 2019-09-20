@@ -8,7 +8,7 @@
 #include <vector>
 #include <list>
 
-class CBackGround{
+class CBackGround: public CMemObject{
 public:
     CBackGround();
     ~CBackGround();

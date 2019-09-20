@@ -83,11 +83,12 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile />
+      <PrecompiledHeaderOutputFile />
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -122,6 +123,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies />
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -146,6 +148,7 @@
     <ClCompile Include="behaviour0control.cpp" />
     <ClCompile Include="behaviourcontrolmanager.cpp" />
     <ClCompile Include="bkmanager.cpp" />
+    <ClCompile Include="bombeffect.cpp" />
     <ClCompile Include="bullet0.cpp" />
     <ClCompile Include="bullet1.cpp" />
     <ClCompile Include="bulletbase.cpp" />
@@ -161,9 +164,14 @@
     <ClCompile Include="consolecanvas.cpp" />
     <ClCompile Include="behaviourcontrol.cpp" />
     <ClCompile Include="dccanvas.cpp" />
+    <ClCompile Include="effect.cpp" />
+    <ClCompile Include="effectconfig.cpp" />
+    <ClCompile Include="effectmanager.cpp" />
     <ClCompile Include="eventmanager.cpp" />
     <ClCompile Include="guimanager.cpp" />
     <ClCompile Include="keyboardcontrol.cpp" />
+    <ClCompile Include="memutile.cpp" />
+    <ClCompile Include="mem_chk.cpp" />
     <ClCompile Include="myplane.cpp" />
     <ClCompile Include="picture.cpp" />
     <ClCompile Include="picturemanager.cpp" />
@@ -173,6 +181,7 @@
     <ClCompile Include="planeconfig.cpp" />
     <ClCompile Include="planemanager.cpp" />
     <ClCompile Include="playerplane1.cpp" />
+    <ClCompile Include="rapidxml.cpp" />
     <ClCompile Include="sound.cpp" />
     <ClCompile Include="stage.cpp" />
     <ClCompile Include="stageconfig.cpp" />
@@ -192,6 +201,7 @@
     <ClInclude Include="behaviour0control.h" />
     <ClInclude Include="behaviourcontrolmanager.h" />
     <ClInclude Include="bkmanager.h" />
+    <ClInclude Include="bombeffect.h" />
     <ClInclude Include="bullet0.h" />
     <ClInclude Include="bullet1.h" />
     <ClInclude Include="bulletbase.h" />
@@ -207,9 +217,14 @@
     <ClInclude Include="consolecanvas.h" />
     <ClInclude Include="behaviourcontrol.h" />
     <ClInclude Include="dccanvas.h" />
+    <ClInclude Include="effect.h" />
+    <ClInclude Include="effectconfig.h" />
+    <ClInclude Include="effectmanager.h" />
     <ClInclude Include="eventmanager.h" />
     <ClInclude Include="guimanager.h" />
     <ClInclude Include="keyboardcontrol.h" />
+    <ClInclude Include="memutile.h" />
+    <ClInclude Include="mem_chk.h" />
     <ClInclude Include="picture.h" />
     <ClInclude Include="picturemanager.h" />
     <ClInclude Include="plane0.h" />

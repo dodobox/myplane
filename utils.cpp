@@ -17,7 +17,7 @@ bool GetFileData( const char* strFileName, byte **pData, int32 *nSize ){
         fclose( f );
         return false;
     }
-    byte *_pData = NEW byte[_nSize + 1];
+    byte *_pData = (byte*)MALLOC( _nSize + 1 );// NEW byte[_nSize + 1];
     fread( _pData, _nSize, 1, f );
     _pData[_nSize] = 0;
     fclose( f );

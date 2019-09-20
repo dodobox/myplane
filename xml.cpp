@@ -10,28 +10,28 @@ CXMLNode::CXMLNode( object32 pObject ){
     m_pObject = pObject;
 }
 CXMLNode CXMLNode::GetNode( const char* strNodeName ){
-    rapidxml::xml_node<char>* _pxmlNode = ((rapidxml::xml_document<char>*)m_pObject)->first_node( strNodeName );
+    xml_node* _pxmlNode = ((xml_document*)m_pObject)->first_node( strNodeName );
     return CXMLNode( _pxmlNode );
 }
 
 CXMLNode CXMLNode::GetFirstNode(){
-    rapidxml::xml_node<char>* _pxmlNode = ((rapidxml::xml_document<char>*)m_pObject)->first_node();
+    xml_node* _pxmlNode = ((xml_document*)m_pObject)->first_node();
     return CXMLNode( _pxmlNode );
 }
 
 CXMLNode CXMLNode::GetNextNode(){
-    rapidxml::xml_node<char>* _pxmlNode = ((rapidxml::xml_document<char>*)m_pObject)->next_sibling();
+    xml_node* _pxmlNode = ((xml_document*)m_pObject)->next_sibling();
     return CXMLNode( _pxmlNode );
 }
 
 CXMLNode CXMLNode::GetNextNode( const char* strNodeName ){
-    rapidxml::xml_node<char>* _pxmlNode = ((rapidxml::xml_document<char>*)m_pObject)->next_sibling( strNodeName );
+    xml_node* _pxmlNode = ((xml_document*)m_pObject)->next_sibling( strNodeName );
     return CXMLNode( _pxmlNode );
 }
 
 int32 CXMLNode::GetNodeCount( const char* strNodeName ){
 	int32 _nResult = 0;
-	rapidxml::xml_node<char>* _pxmlNode = ((rapidxml::xml_document<char>*)m_pObject)->first_node( strNodeName );
+	xml_node* _pxmlNode = ((xml_document*)m_pObject)->first_node( strNodeName );
 	while ( _pxmlNode ){
 		_nResult ++;
 		_pxmlNode = _pxmlNode->next_sibling( strNodeName );
@@ -41,7 +41,7 @@ int32 CXMLNode::GetNodeCount( const char* strNodeName ){
 
 int32 CXMLNode::GetChildCount(){
     int32 _nResult = 0;
-    rapidxml::xml_node<char>* _pxmlNode = ((rapidxml::xml_document<char>*)m_pObject)->first_node();
+    xml_node* _pxmlNode = ((xml_document*)m_pObject)->first_node();
     while ( _pxmlNode ){
         _nResult ++;
         _pxmlNode = _pxmlNode->next_sibling();
@@ -50,11 +50,11 @@ int32 CXMLNode::GetChildCount(){
 }
 
 const char* CXMLNode::GetName(){
-    return ((rapidxml::xml_document<char>*)m_pObject)->name();
+    return ((xml_document*)m_pObject)->name();
 }
 
 const char* CXMLNode::GetValue(){
-    return ((rapidxml::xml_document<char>*)m_pObject)->value();
+    return ((xml_document*)m_pObject)->value();
 }
 int32 CXMLNode::GetInt32Value(){
     const char* _pValue = GetValue();
@@ -73,7 +73,7 @@ float CXMLNode::GetFloatValue(){
 
 
 const char* CXMLNode::GetAttributeValue( const char* strAttriName ){
-    rapidxml::xml_attribute<char>* _strAttr = ((rapidxml::xml_document<char>*)m_pObject)->first_attribute( strAttriName );
+    xml_attribute* _strAttr = ((xml_document*)m_pObject)->first_attribute( strAttriName );
     if ( _strAttr ){
         return _strAttr->value();
     }
@@ -103,24 +103,27 @@ CXMLDocment::CXMLDocment( const char* strFileName )
     int32 _nSize = 0;
     GetFileData( strFileName, (byte**)&m_strData, &_nSize );
 
-    m_pObject = NEW rapidxml::xml_document<char>;
-    ((rapidxml::xml_document<char>*)m_pObject)->parse<0>( m_strData );
+    xml_document* _pDoc = (xml_document*)MALLOC( sizeof( xml_document ));
+    _pDoc->xml_document::xml_document();
+    _pDoc->parse<0>( m_strData );
+    m_pObject = _pDoc;
 }
 
 CXMLDocment::~CXMLDocment(){
-    int32* p = (int32*)m_pObject;
-    DELETE( p );
-    DELETE( m_strData );
+    xml_document* _pDoc = (xml_document*)m_pObject;
+    _pDoc->xml_document::~xml_document();
+    FREE( _pDoc );
+    FREE( m_strData );
 	//DELETESCHAR( m_strData );
 }
 
 CXMLNode CXMLDocment::GetNode( const char* strNodeName ){
-    rapidxml::xml_node<char>* _pxmlNode = ((rapidxml::xml_document<char>*)m_pObject)->first_node( strNodeName );
+    xml_node* _pxmlNode = ((xml_document*)m_pObject)->first_node( strNodeName );
     return CXMLNode( _pxmlNode );
 }
 
 CXMLNode CXMLDocment::GetFirstNode(){
-    rapidxml::xml_node<char>* _pxmlNode = ((rapidxml::xml_document<char>*)m_pObject)->first_node();
+    xml_node* _pxmlNode = ((xml_document*)m_pObject)->first_node();
     return CXMLNode( _pxmlNode );
 }
 

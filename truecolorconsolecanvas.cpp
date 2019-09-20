@@ -24,10 +24,10 @@ void CTrueColorConsoleCanvas::Init( int32 nWidth, int32 nHeight ){
     if( !SetConsoleMode( hOut, dwMode ) ){
         return;
     }
-    m_ppFGCanvas = New2DArray<uint32>( nWidth, nHeight );
+    m_ppFGCanvas = NEW2DARRAY( uint32, nWidth, nHeight );
 }
 void CTrueColorConsoleCanvas::Final(){
-    Delete2DArray( m_ppFGCanvas );
+    DELETE2DARRAY( uint32, m_ppFGCanvas );
     //ReleaseDC( console, console_hdc );
     //DeleteDC( console_hdc );
 }

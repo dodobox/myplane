@@ -1,5 +1,6 @@
 #include "dccanvas.h"
 #include "utils.h"
+#include <Windows.h>
 
 static uint32 _vFGColorTable[16] = {
     RGB( 0,0,0 ),
@@ -28,14 +29,14 @@ CDCCanvas::~CDCCanvas(){
 
 }
 void CDCCanvas::Init( int32 nWidth, int32 nHeight ){
-    console = GetConsoleWindow();                      //获取控制台窗口句柄
-    console_hdc = GetDC( console );                      //获取绘图dc
-    m_ppFGCanvas = New2DArray<uint32>( nWidth, nHeight );
+    console = (uint32)GetConsoleWindow();                      //获取控制台窗口句柄
+    console_hdc = (uint32)GetDC( (HWND)console );                      //获取绘图dc
+    m_ppFGCanvas = NEW2DARRAY( uint32, nWidth, nHeight );
 }
 void CDCCanvas::Final(){
-    Delete2DArray( m_ppFGCanvas );
-    ReleaseDC( console, console_hdc );
-    DeleteDC( console_hdc );
+    DELETE2DARRAY( uint32, m_ppFGCanvas );
+    ReleaseDC( (HWND)console, (HDC)console_hdc );
+    DeleteDC( (HDC)console_hdc );
 }
 void CDCCanvas::Clear(){
     memset( m_ppFGCanvas[0], 0, m_tCanvasSize.X * m_tCanvasSize.Y * sizeof( uint32 ) );
@@ -176,33 +177,16 @@ int32 CDCCanvas::Get16ColorIndex( uint32 nColor ){
 }
 
 bool CDCCanvas::SetPixel( int32 x, int32 y, uint32 nColor ){
-   // return false;
     if( x < 0 || x >= m_tCanvasSize.X || y < 0 || y >= m_tCanvasSize.Y )return false;
-
     if( nColor < 0xff000000 ){
         return false;
     }
-
     uint32 _R, _G, _B;
     GETCOLORRGB( nColor, _R, _G, _B );
     m_ppFGCanvas[ y ][ x ] = RGB( _B, _G, _R );
-
-    //////int32 _nIndex = Get16ColorIndex( nColor );
-    //////if( _nIndex < 0 ){
-    //////    return false;
-    //////}
-    //////m_ppFGCanvas[y][x] = _vFGColorTable[ _nIndex ];
     return true;
 }
-//void CDCCanvas::SetBKPixel( int32 x, int32 y, uint32 nColor ){
-//  //  return;
-//    if( x < 0 || x >= m_tCanvasSize.X || y < 0 || y >= m_tCanvasSize.Y )return;
-//    int32 _nIndex = Get16ColorIndex( nColor );
-//    if( _nIndex < 0 ){
-//        return;
-//    }
-//    m_ppFGCanvas[y][x] = _nIndex;
-//}
+
 void CDCCanvas::DrawRect( int32 x, int32 y, int32 nWidth, int32 nHeight, uint32* pColors ){
     uint32* _pColors = pColors;
     for( int32 i = 0; i < nHeight; i ++ ){
@@ -212,20 +196,12 @@ void CDCCanvas::DrawRect( int32 x, int32 y, int32 nWidth, int32 nHeight, uint32*
         }
     }
 }
-
 void CDCCanvas::Show(){
-
     HBITMAP hBitmap = ::CreateBitmap( m_tCanvasSize.X, m_tCanvasSize.Y, 1, 32, m_ppFGCanvas[0] );
-    HDC hMemDc = ::CreateCompatibleDC( console_hdc );
+    HDC hMemDc = ::CreateCompatibleDC( (HDC)console_hdc );
     HBITMAP hOldBitmap = (HBITMAP)::SelectObject( hMemDc, hBitmap );
-    ::BitBlt( console_hdc, 0, 0, m_tCanvasSize.X, m_tCanvasSize.Y, hMemDc, 0, 0, SRCCOPY );
+    ::BitBlt( (HDC)console_hdc, 0, 0, m_tCanvasSize.X, m_tCanvasSize.Y, hMemDc, 0, 0, SRCCOPY );
     ::SelectObject( hMemDc, hOldBitmap );
     ::DeleteObject( hBitmap );
-
-    //for( int i = 0; i < m_tCanvasSize.Y; i++ ){
-    //    for( int j = 0; j < m_tCanvasSize.X; j++ ){
-    //        ::SetPixel( console_hdc, j, i, _vFGColorTable[m_ppFGCanvas[i][j]] );
-    //    }
-    //}
 
 }

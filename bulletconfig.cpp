@@ -46,7 +46,9 @@ void CBulletConfig::Init(){
 
 }
 void CBulletConfig::Final(){
-
+    for( int32 i = 0; i < EPT_COUNT; i ++ ){
+        DELETE( m_vBulletInfoList[i] );
+    }
 }
 CBulletInfo* CBulletConfig::GetBulletInfo( EBulletType eType ){
     return m_vBulletInfoList[eType];

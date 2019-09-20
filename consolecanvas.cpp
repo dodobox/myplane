@@ -1,6 +1,7 @@
 #include "consolecanvas.h"
 #include "utils.h"
 
+
 static uint16 _vFGColorTable[16] = {
     0,
     BACKGROUND_RED,
@@ -70,14 +71,14 @@ CConsoleCanvas::~CConsoleCanvas(){
 
 }
 void CConsoleCanvas::Init( int32 nWidth, int32 nHeight ){
-    m_ppCharInfo = New2DArray<CHAR_INFO>( nWidth, nHeight );
+    m_ppCharInfo = NEW2DARRAY( CHAR_INFO, nWidth, nHeight );
   //  m_ppBKCanvas = New2DArray<byte>( nWidth, nHeight );
-    m_ppFGCanvas = New2DArray<byte>( nWidth, nHeight );
+    m_ppFGCanvas = NEW2DARRAY( byte, nWidth, nHeight );
 }
 void CConsoleCanvas::Final(){
-    Delete2DArray( m_ppFGCanvas );
+    DELETE2DARRAY( byte, m_ppFGCanvas );
   //  Delete2DArray( m_ppBKCanvas );
-    Delete2DArray( m_ppCharInfo );
+    DELETE2DARRAY( CHAR_INFO, m_ppCharInfo );
 }
 void CConsoleCanvas::Clear(){
   //  memset( m_ppBKCanvas[0], 0, m_tCanvasSize.X * m_tCanvasSize.Y );

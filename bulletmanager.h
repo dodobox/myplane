@@ -5,7 +5,7 @@
 #include "bulletbase.h"
 #include <list>
 
-class CBulletManager{
+class CBulletManager: public CMemObject{
 public:
     static CBulletManager* GetInterface();
     static void Release();

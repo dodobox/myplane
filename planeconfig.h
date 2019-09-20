@@ -6,7 +6,7 @@
 #include <vector>
 
 #define MAXEMITTERPOINT (10)
-class CPlaneInfo{
+class CPlaneInfo: public CMemObject{
 public:
     EPlaneType m_eType;
     struct{
@@ -21,7 +21,7 @@ public:
     }m_tEmitter;
 };
 
-class CPlaneConfig{
+class CPlaneConfig: public CMemObject{
 public:
     static CPlaneConfig* GetInterface();
     static void Release();

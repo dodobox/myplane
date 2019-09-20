@@ -125,6 +125,25 @@
     <ClCompile Include="truecolorconsolecanvas.cpp">
       <Filter>canvas</Filter>
     </ClCompile>
+    <ClCompile Include="effect.cpp">
+      <Filter>effect</Filter>
+    </ClCompile>
+    <ClCompile Include="effectmanager.cpp">
+      <Filter>effect</Filter>
+    </ClCompile>
+    <ClCompile Include="bombeffect.cpp">
+      <Filter>effect</Filter>
+    </ClCompile>
+    <ClCompile Include="effectconfig.cpp">
+      <Filter>effect</Filter>
+    </ClCompile>
+    <ClCompile Include="mem_chk.cpp">
+      <Filter>mem</Filter>
+    </ClCompile>
+    <ClCompile Include="memutile.cpp">
+      <Filter>mem</Filter>
+    </ClCompile>
+    <ClCompile Include="rapidxml.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="playerplane0.h" />
@@ -254,6 +273,24 @@
     <ClInclude Include="truecolorconsolecanvas.h">
       <Filter>canvas</Filter>
     </ClInclude>
+    <ClInclude Include="effect.h">
+      <Filter>effect</Filter>
+    </ClInclude>
+    <ClInclude Include="effectmanager.h">
+      <Filter>effect</Filter>
+    </ClInclude>
+    <ClInclude Include="bombeffect.h">
+      <Filter>effect</Filter>
+    </ClInclude>
+    <ClInclude Include="effectconfig.h">
+      <Filter>effect</Filter>
+    </ClInclude>
+    <ClInclude Include="mem_chk.h">
+      <Filter>mem</Filter>
+    </ClInclude>
+    <ClInclude Include="memutile.h">
+      <Filter>mem</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="plane">
@@ -294,6 +331,12 @@
     </Filter>
     <Filter Include="bulletemitter">
       <UniqueIdentifier>{e1567201-e7cf-45a1-b3d7-59e859ce4f8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="effect">
+      <UniqueIdentifier>{35fa35cb-ff8c-4e3d-b416-8eea8e2c507f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mem">
+      <UniqueIdentifier>{c72fc769-2ee7-456c-a0a0-b6db577fcaf4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
